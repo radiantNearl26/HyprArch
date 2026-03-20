@@ -1,25 +1,4 @@
 {
-    "com.github.ulauncher.ulauncher-emoji": {
-        "id": "com.github.ulauncher.ulauncher-emoji",
-        "url": "https://github.com/Ulauncher/ulauncher-emoji",
-        "updated_at": "2024-11-12T19:59:10.041749",
-        "last_commit": "827cfe5e1d2f89f742f811f981759787b0654fa9",
-        "last_commit_time": "2023-11-04T18:37:13"
-    },
-    "com.github.elken.terminal-runner": {
-        "id": "com.github.elken.terminal-runner",
-        "url": "https://github.com/elken/Terminal-Runner",
-        "updated_at": "2024-11-12T20:09:04.028922",
-        "last_commit": "6807ebe6047462bcce6063c63228eddcb8c6b481",
-        "last_commit_time": "2020-02-22T23:04:04"
-    },
-    "com.github.dhelmr.ulauncher-duckduckgo-bangs": {
-        "id": "com.github.dhelmr.ulauncher-duckduckgo-bangs",
-        "url": "https://github.com/dhelmr/ulauncher-duckduckgo-bangs",
-        "updated_at": "2024-11-12T20:13:52.159050",
-        "last_commit": "65c04b7e989746aff416db71c788cecd511b80d2",
-        "last_commit_time": "2023-07-30T21:06:12"
-    },
     "com.github.episode6.ulauncher-system-management-direct": {
         "id": "com.github.episode6.ulauncher-system-management-direct",
         "url": "https://github.com/episode6/ulauncher-system-management-direct",
