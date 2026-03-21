@@ -1,29 +1,29 @@
 {
-    "checksum": "1d169de3baaea0572452ee31b4976091",
-    "wallpaper": "/home/Asmit/.walls/kawaii-anime/miyabi.jpg",
+    "checksum": "c0ba329875bff3d5d42157c795f44695",
+    "wallpaper": "/home/Asmit/.walls/kawaii-anime/your-lie.jpg",
     "alpha": "100",
 
     "special": {
-        "background": "#0a0c0d",
+        "background": "#0a0d0e",
         "foreground": "#c1c2c2",
         "cursor": "#c1c2c2"
     },
     "colors": {
-        "color0": "#0a0c0d",
-        "color1": "#34464B",
-        "color2": "#315566",
-        "color3": "#474A51",
-        "color4": "#62636B",
-        "color5": "#876E7E",
-        "color6": "#6A8798",
+        "color0": "#0a0d0e",
+        "color1": "#294A51",
+        "color2": "#36656E",
+        "color3": "#506667",
+        "color4": "#80765D",
+        "color5": "#3F7687",
+        "color6": "#549E98",
         "color7": "#c1c2c2",
-        "color8": "#566969",
-        "color9": "#34464B",
-        "color10": "#315566",
-        "color11": "#474A51",
-        "color12": "#62636B",
-        "color13": "#876E7E",
-        "color14": "#6A8798",
+        "color8": "#56636a",
+        "color9": "#294A51",
+        "color10": "#36656E",
+        "color11": "#506667",
+        "color12": "#80765D",
+        "color13": "#3F7687",
+        "color14": "#549E98",
         "color15": "#c1c2c2"
     }
 }

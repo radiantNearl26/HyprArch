@@ -10,17 +10,18 @@
 !LICENSE
 !README.md
 !.dotfiles-guide.md
-!.config/VSCodium/User/settings.json
+!.config/Code/User/settings.json
 !.gitignore
 !.config/oh-my-posh/powerlevel10k_lean.omp.json
 
 # Also heres the folders/files inside .config which needs to be ignored
 .config/audacity/
+.config/btop/btop.log
 .config/chromium/
 .config/dconf/
 .config/Code
-.config/Code - OSS
 .config/Discord
+.confi/discord
 .config/dleyna-renderer-service.conf
 .config/eog/
 .config/evolution/
@@ -57,6 +58,7 @@
 .config/winegui/
 .config/wireguard
 .config/Windscribe
+.config/yelp
 .config/zsh/.zhistory
 .config/zsh/.zcompdump
 .config/zsh/zsh-compdump
