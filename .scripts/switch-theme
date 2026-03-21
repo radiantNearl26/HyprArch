@@ -14,7 +14,7 @@ CONFIG_GTK4="$HOME/.config/gtk-4.0/settings.ini"
 CONFIG_KVANTUM="$HOME/.config/Kvantum/kvantum.kvconfig"
 
 if [ "$MODE" == "dark" ]; then
-    GTK_THEME="Tokyonight-Dark"
+    GTK_THEME="adw-gtk3-dark"
     ICON_THEME="Papirus-Dark"
     KVANTUM_THEME="KvArcTokyoNight"
     PREFER_DARK=1
@@ -23,13 +23,13 @@ if [ "$MODE" == "dark" ]; then
     WALLPAPER="$HOME/.walls/kawaii-anime/your-lie.jpg"
     WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-dark.css
 else
-    GTK_THEME="Tokyonight-Light"
+    GTK_THEME="Catppuccin-Latte-Standard-Blue-Light"
     ICON_THEME="Papirus-Light"
     KVANTUM_THEME="KvLibadwaita"
     PREFER_DARK=0
     COLOR_SCHEME="default"
     ULAUNCHER_THEME="light"
-    WALLPAPER="$HOME/.walls/kawaii-anime/1349150.jpg"
+    WALLPAPER="$HOME/.walls/kawaii-anime/violet.jpg"
     WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-light.css
 fi
 
@@ -78,6 +78,8 @@ echo "Theme switched to $GTK_THEME / $KVANTUM_THEME"
 CONFIG_ULAUNCHER="$HOME/.config/ulauncher/settings.json"
 if [ -f "$CONFIG_ULAUNCHER" ]; then
     sed -i "s/\"theme-name\": \".*\"/\"theme-name\": \"$ULAUNCHER_THEME\"/" "$CONFIG_ULAUNCHER"
+    pkill ulauncher
+    ulauncher --no-window-shadow --hide-window & disown
     echo "Ulauncher theme updated to $ULAUNCHER_THEME"
 else
     echo "Warning: $CONFIG_ULAUNCHER not found."
@@ -85,8 +87,9 @@ fi
 
 # Update wallpaper
 if [[ "$MODE" == "light" ]]; then
-    waypaper --backend swww --wallpaper "$WALLPAPER" --fill fill --monitor All --no-post-command
-    wal -i "$WALLPAPER" -l
+    waypaper --backend swww --wallpaper "$WALLPAPER" --fill fill --monitor All
+    wal -i "$WALLPAPER" -lt
 elif [[ "$MODE" == "dark" ]]; then
     waypaper --backend swww --wallpaper "$WALLPAPER" --fill fill --monitor All
+    wal -i "$WALLPAPER"
 fi

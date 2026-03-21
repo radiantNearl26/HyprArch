@@ -56,7 +56,8 @@ tooltip label {
 #custom-record,
 #custom-stop,
 #custom-section,
-#custom-theme {
+#custom-theme-light,
+#custom-theme-dark {
     padding: 1px 10px;
     margin: 8px 4px;
     background: alpha(darker(@main-color), 0.3);
@@ -153,6 +154,7 @@ tooltip label {
     padding: 0px 8px;
     margin: 0px 2px 4px 2px;
     color: lighter(@main-color);
+    background: alpha(@main-color, 0);
 }
 
 
@@ -160,7 +162,7 @@ tooltip label {
     padding: 0px 8px;
     margin: 8px 4px;
     color: @background;
-    background: alpha(lighter(@color13), 0.7);
+    background: alpha(lighter(@main-color), 0.7);
     border-radius: 10px;
 }
 

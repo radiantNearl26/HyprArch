@@ -96,13 +96,19 @@
       "transition-duration": 300,
       "transition-left-to-right": false
     },
-    "modules": ["custom/arrow-left","custom/theme","custom/record", "custom/section", "custom/stop"]
+    "modules": ["custom/arrow-left","custom/theme-dark","custom/theme-light","custom/record", "custom/section", "custom/stop"]
   },
-  "custom/theme": {
+  "custom/theme-dark": {
     "format": "󰏘",
     "tooltip": true,
-    "tooltip-format": "Switch Theme",
-    "on-click": "~/.scripts/toggle-theme.sh"
+    "tooltip-format": "Switch Theme to Dark",
+    "on-click": "bash ~/.scripts/switch-theme dark"
+  },
+  "custom/theme-light": {
+    "format": "󰏘",
+    "tooltip": true,
+    "tooltip-format": "Switch Theme to Light",
+    "on-click": "bash ~/.scripts/switch-theme light"
   },
   "custom/record": {
     "format": "",
@@ -291,7 +297,7 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "blueman-manager",
+    "on-click": "overskride",
     "on-click-right": "alacritty -e 'bluetui'"
   },
   "network": {
