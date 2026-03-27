@@ -1,95 +1,61 @@
 #!/bin/bash
 
-# Usage: switch-theme [light|dark]
-
 MODE=$1
-
+# Incorrect input - Show help information
 if [[ "$MODE" != "light" && "$MODE" != "dark" ]]; then
     echo "Usage: $0 [light|dark]"
     exit 1
 fi
 
-CONFIG_GTK3="$HOME/.config/gtk-3.0/settings.ini"
-CONFIG_GTK4="$HOME/.config/gtk-4.0/settings.ini"
-CONFIG_KVANTUM="$HOME/.config/Kvantum/kvantum.kvconfig"
-
-if [ "$MODE" == "dark" ]; then
-    GTK_THEME="adw-gtk3-dark"
-    ICON_THEME="Papirus-Dark"
-    KVANTUM_THEME="KvArcTokyoNight"
-    PREFER_DARK=1
-    COLOR_SCHEME="prefer-dark"
-    ULAUNCHER_THEME="darkblue-ice"
-    WALLPAPER="$HOME/.walls/kawaii-anime/your-lie.jpg"
-    WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-dark.css
-else
-    GTK_THEME="Catppuccin-Latte-Standard-Blue-Light"
-    ICON_THEME="Papirus-Light"
-    KVANTUM_THEME="KvLibadwaita"
-    PREFER_DARK=0
-    COLOR_SCHEME="default"
-    ULAUNCHER_THEME="light"
-    WALLPAPER="$HOME/.walls/kawaii-anime/violet.jpg"
-    WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-light.css
-fi
+# Declare directory variables
+HOME=/home/$(whoami)
+WALLPAPER="$(grep "wallpaper =" ~/.config/waypaper/config.ini | cut -d ' ' -f3)"
+WALLPAPER="${WALLPAPER/#\~/$HOME}"
+ENV_DIR="$HOME/.config/hypr/hyprsource/env_vars.conf"
+CONFIG_ULAUNCHER="$HOME/.config/ulauncher/settings.json"
 
 echo "Switching to $MODE mode..."
 
+# Update colorscheme
+if [[ "$MODE" == "light" ]]; then
+    wal -ni "$WALLPAPER" -lt
+elif [[ "$MODE" == "dark" ]]; then
+    wal -ni "$WALLPAPER"
+fi
+
+# Determine accent color
+COLOR="$(grep "color9" ~/.cache/wal/colors.css | cut -d '#' -f2)"
+COLOR="${COLOR%;}" # HEX Code of the color
+echo "Acquired color: $COLOR"
+accent=$(python $HOME/.scripts/color-extract.py $COLOR)
+echo "Accent color: $accent"
+
+if [ "$MODE" == "dark" ]; then
+    GTK_THEME="WhiteSur-Light"
+    COLOR_SCHEME="prefer-dark"
+    ULAUNCHER_THEME="darkblue-ice"
+    WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-dark.css
+    ACCENT="$accent:dark"
+else
+    GTK_THEME="WhiteSur-Light"
+    COLOR_SCHEME="prefer-light"
+    ULAUNCHER_THEME="light"
+    WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-light.css
+    ACCENT="$accent"
+fi
+
 # Switch waybar stylesheet
-    cp "$WAYBAR_STYLE" "$HOME/.config/waybar/style.css"
-    echo "Swapped waybar stylesheet for $MODE mode."
-
-# Update GTK 3 settings
-if [ -f "$CONFIG_GTK3" ]; then
-    sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$GTK_THEME/" "$CONFIG_GTK3"
-    sed -i "s/^gtk-icon-theme-name=.*/gtk-icon-theme-name=$ICON_THEME/" "$CONFIG_GTK3"
-    sed -i "s/^gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=$PREFER_DARK/" "$CONFIG_GTK3"
-else
-    echo "Warning: $CONFIG_GTK3 not found."
-fi
-
-# Update GTK 4 settings
-if [ -f "$CONFIG_GTK4" ]; then
-    sed -i "s/^gtk-theme-name=.*/gtk-theme-name=$GTK_THEME/" "$CONFIG_GTK4"
-    sed -i "s/^gtk-icon-theme-name=.*/gtk-icon-theme-name=$ICON_THEME/" "$CONFIG_GTK4"
-    sed -i "s/^gtk-application-prefer-dark-theme=.*/gtk-application-prefer-dark-theme=$PREFER_DARK/" "$CONFIG_GTK4"
-else
-    echo "Warning: $CONFIG_GTK4 not found."
-fi
-
-# Update Kvantum settings
-# Create file if it doesn't exist
-if [ ! -f "$CONFIG_KVANTUM" ]; then
-    mkdir -p "$(dirname "$CONFIG_KVANTUM")"
-    echo "[General]" > "$CONFIG_KVANTUM"
-    echo "theme=KvGnome" >> "$CONFIG_KVANTUM"
-fi
-
-sed -i "s/^theme=.*/theme=$KVANTUM_THEME/" "$CONFIG_KVANTUM"
+cp "$WAYBAR_STYLE" "$HOME/.config/waybar/style.css"
+echo "Swapped waybar stylesheet for $MODE mode."
 
 # Apply GSettings (for running GTK apps)
-gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME" 2>/dev/null
-gsettings set org.gnome.desktop.interface icon-theme "$ICON_THEME" 2>/dev/null
+gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME-$ACCENT" 2>/dev/null
 gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME" 2>/dev/null
+sed -i "s/\(env = GTK_THEME,\).*/\1$GTK_THEME-$ACCENT/" "$ENV_DIR"
+echo "GTK Theme switched to $GTK_THEME-$ACCENT. Restart for changes!"
 
-echo "Theme switched to $GTK_THEME / $KVANTUM_THEME"
-
-# Update Ulauncher settings
-CONFIG_ULAUNCHER="$HOME/.config/ulauncher/settings.json"
-if [ -f "$CONFIG_ULAUNCHER" ]; then
-    sed -i "s/\"theme-name\": \".*\"/\"theme-name\": \"$ULAUNCHER_THEME\"/" "$CONFIG_ULAUNCHER"
-    pkill ulauncher
-    ulauncher --no-window-shadow --hide-window & disown
-    echo "Ulauncher theme updated to $ULAUNCHER_THEME"
-else
-    echo "Warning: $CONFIG_ULAUNCHER not found."
-fi
-
-# Update wallpaper
-if [[ "$MODE" == "light" ]]; then
-    waypaper --backend swww --wallpaper "$WALLPAPER" --fill fill --monitor All
-    wal -i "$WALLPAPER" -lt
-elif [[ "$MODE" == "dark" ]]; then
-    waypaper --backend swww --wallpaper "$WALLPAPER" --fill fill --monitor All
-    wal -i "$WALLPAPER"
-fi
+# Update Ulauncher theme
+sed -i "s/\"theme-name\": \".*\"/\"theme-name\": \"$ULAUNCHER_THEME\"/" "$CONFIG_ULAUNCHER"
+pkill ulauncher
+ulauncher --no-window-shadow & disown
+echo "Ulauncher theme updated to $ULAUNCHER_THEME"
