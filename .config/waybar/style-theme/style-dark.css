@@ -1,7 +1,7 @@
 @import "/home/Asmit/.cache/wal/colors-waybar.css";
 
-@define-color main-color @color14;
-@define-color text-color @color15;
+@define-color main-color lighter(@color9);
+@define-color text-color lighter(@main-color);
 
 * {
     font: bold 13px "JetBrainsMono Nerd Font Propo";
