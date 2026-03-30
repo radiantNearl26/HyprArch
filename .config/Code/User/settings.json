@@ -1,11 +1,14 @@
 {
   /* Workbench configuration */
-  "workbench.colorTheme": "Subaru (Dark)",
-  "workbench.preferredDarkColorTheme": "Aura Dark",
+  "workbench.colorTheme": "Wal Bordered",
+  "workbench.preferredDarkColorTheme": "Wal Bordered",
   "workbench.preferredLightColorTheme": "Subaru (Light)",
   "workbench.iconTheme": "flow-dim",
   "workbench.productIconTheme": "Tabler",
   "workbench.activityBar.location": "top",
+  "window.controlsStyle": "native",
+  "window.titleBarStyle": "native",
+  "window.autoDetectColorScheme": true,
 
   /* Editor configuration */
   "editor.fontSize": 16,
@@ -26,7 +29,6 @@
   "workbench.list.smoothScrolling": true,
   "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.initialHint": false,
-  "window.menuBarVisibility": "compact",
 
   /* File Explorer configuration */
   "explorer.confirmDelete": false,
@@ -66,23 +68,22 @@
   "pylint.showNotifications": "always",
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
+  "jupyter.askForKernelRestart": false,
+  "jupyter.themeMatplotlibPlots": true,
 
   /* ESLint configuration */
   "eslint.format.enable": true,
   "vs-code-prettier-eslint.prettierLast": true,
 
   /* Add more settings as needed */
-  "git.autofetch": false,
+  "git.autofetch": true,
   "git.confirmSync": false,
   "git.openRepositoryInParentFolders": "always",
   "workbench.navigationControl.enabled": false,
-  "jupyter.askForKernelRestart": false,
   "notebook.lineNumbers": "on",
   "files.autoSave": "afterDelay",
   "notebook.formatOnSave.enabled": true,
   "chat.viewSessions.enabled": false,
-  "chat.tools.terminal.autoApprove": {
-    "npx shadcn@latest": true,
-    "npm install": true,
-  },
+  "chat.agentsControl.enabled": false,
+  "window.menuBarVisibility": "toggle",
 }
