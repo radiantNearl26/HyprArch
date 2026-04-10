@@ -6,8 +6,6 @@
   "workbench.iconTheme": "flow-dim",
   "workbench.productIconTheme": "Tabler",
   "workbench.activityBar.location": "top",
-  "window.controlsStyle": "native",
-  "window.titleBarStyle": "native",
   "window.autoDetectColorScheme": true,
 
   /* Editor configuration */
@@ -52,6 +50,14 @@
   "chat.commandCenter.enabled": false,
   "chat.useAgentSkills": true,
   "chat.viewSessions.orientation": "stacked",
+  "chat.checkpoints.showFileChanges": true,
+  "chat.agentsControl.enabled": false,
+  "chat.editing.explainChanges.enabled": true,
+  "chat.restoreLastPanelSession": true,
+  "chat.viewProgressBadge.enabled": true,
+  "chat.viewSessions.enabled": false,
+  "chat.useNestedAgentsMdFiles": true,
+  "inlineChat.enableV2": true,
 
   /* Python configuration */
   "python.languageServer": "Pylance",
@@ -79,11 +85,9 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.openRepositoryInParentFolders": "always",
-  "workbench.navigationControl.enabled": false,
   "notebook.lineNumbers": "on",
   "files.autoSave": "afterDelay",
   "notebook.formatOnSave.enabled": true,
-  "chat.viewSessions.enabled": false,
-  "chat.agentsControl.enabled": false,
-  "window.menuBarVisibility": "toggle",
+  "workbench.navigationControl.enabled": false,
+  "workbench.browser.showInTitleBar": true,
 }
