@@ -29,15 +29,15 @@ family = "CaskaydiaCove Nerd Font Mono"
 style = "Regular"
 
 [font.italic]
-family = "ComicShannsMono Nerd Font"
+family = "CaskaydiaCove Nerd Font Mono"
 style = "Italic"
 
 [font.bold]
-family = "ComicShannsMono Nerd Font Propo"
+family = "CaskaydiaCove Nerd Font Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "ComicShannsMono Nerd Font"
+family = "CaskaydiaCove Nerd Font Mono"
 style = "Bold Italic"
 
 [font.glyph_offset]
