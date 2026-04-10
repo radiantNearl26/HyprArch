@@ -1,17 +1,15 @@
-local lspconfig = require('lspconfig')
-
-lspconfig.arduino_language_server.setup {} -- Arduino
-lspconfig.basedpyright.setup {}            -- Python
-lspconfig.bashls.setup {}                  -- Bash / ZSH
-lspconfig.biome.setup {}                   -- JSON / JS
-lspconfig.clangd.setup {}                  -- C / C++
-lspconfig.cssls.setup {}                   -- CSS
-lspconfig.dockerls.setup {}                -- Docker
-lspconfig.html.setup {}                    -- HTML
-lspconfig.hyprls.setup {}                  -- Hypr configs
-lspconfig.lua_ls.setup {}                  -- Lua
-lspconfig.markdown_oxide.setup {}          -- Markdown (Obsidian)
-lspconfig.systemd_ls.setup {}              -- Systemd
-lspconfig.textlsp.setup {}                 -- Text / LATEXT
-lspconfig.taplo.setup {}                   -- TOML
-lspconfig.yamlls.setup {}                  -- YAML
+vim.lsp.config('arduino_language_server', { autostart = true }) -- Arduino
+vim.lsp.config('basedpyright', { autostart = true })            -- Python
+vim.lsp.config('bashls', { autostart = true })                  -- Bash / ZSH
+vim.lsp.config('biome', { autostart = true })                   -- JSON / JS
+vim.lsp.config('clangd', { autostart = true })                  -- C / C++
+vim.lsp.config('cssls', { autostart = true })                   -- CSS
+vim.lsp.config('dockerls', { autostart = true })                -- Docker
+vim.lsp.config('html', { autostart = true })                    -- HTML
+vim.lsp.config('hyprls', { autostart = true })                  -- Hypr configs
+vim.lsp.config('lua_ls', { autostart = true })                  -- Lua
+vim.lsp.config('markdown_oxide', { autostart = true })          -- Markdown (Obsidian)
+vim.lsp.config('systemd_ls', { autostart = true })              -- Systemd
+vim.lsp.config('textlsp', { autostart = true })                 -- Text / LATEXT
+vim.lsp.config('taplo', { autostart = true })                   -- TOML
+vim.lsp.config('yamlls', { autostart = true })                  -- YAML
