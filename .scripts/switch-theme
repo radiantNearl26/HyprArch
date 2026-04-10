@@ -13,6 +13,7 @@ WALLPAPER="$(grep "wallpaper =" ~/.config/waypaper/config.ini | cut -d ' ' -f3)"
 WALLPAPER="${WALLPAPER/#\~/$HOME}"
 ENV_DIR="$HOME/.config/hypr/hyprsource/env_vars.conf"
 CONFIG_ULAUNCHER="$HOME/.config/ulauncher/settings.json"
+CONFIG_SNAPPY="$HOME/.config/snappy-switcher/config.ini"
 
 echo "Switching to $MODE mode..."
 
@@ -30,18 +31,20 @@ echo "Acquired color: $COLOR"
 accent=$(python $HOME/.scripts/color-extract.py $COLOR)
 echo "Accent color: $accent"
 
-if [ "$MODE" == "dark" ]; then
+if [[ "$MODE" == "dark" ]]; then
     GTK_THEME="WhiteSur-Light"
     COLOR_SCHEME="prefer-dark"
     ULAUNCHER_THEME="darkblue-ice"
     WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-dark.css
     ACCENT="$accent:dark"
+    SNAPPY_THEME="cyberpunk.ini"
 else
     GTK_THEME="WhiteSur-Light"
     COLOR_SCHEME="prefer-light"
-    ULAUNCHER_THEME="light"
+    ULAUNCHER_THEME="lightblue-ice"
     WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-light.css
     ACCENT="$accent"
+    SNAPPY_THEME="catppuccin-latte.ini"
 fi
 
 # Switch waybar stylesheet
@@ -51,11 +54,18 @@ echo "Swapped waybar stylesheet for $MODE mode."
 # Apply GSettings (for running GTK apps)
 gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME-$ACCENT" 2>/dev/null
 gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME" 2>/dev/null
-sed -i "s/\(env = GTK_THEME,\).*/\1$GTK_THEME-$ACCENT/" "$ENV_DIR"
-echo "GTK Theme switched to $GTK_THEME-$ACCENT. Restart for changes!"
+sed -i "s/\(env = GTK_THEME,\).*/\1$GTK_THEME$ACCENT/" "$ENV_DIR"
+export GTK_THEME="$GTK_THEME$ACCENT"
+echo "GTK Theme switched to $GTK_THEME. Restart for changes!"
 
 # Update Ulauncher theme
 sed -i "s/\"theme-name\": \".*\"/\"theme-name\": \"$ULAUNCHER_THEME\"/" "$CONFIG_ULAUNCHER"
 pkill ulauncher
-ulauncher --no-window-shadow & disown
+(ulauncher --no-window-shadow > /dev/null 2>&1 &)
 echo "Ulauncher theme updated to $ULAUNCHER_THEME"
+
+# Update snappy-switcher theme
+sed -i "s/\(name = \).*/\1$SNAPPY_THEME/" "$CONFIG_SNAPPY"
+pkill snappy-switcher
+(snappy-switcher --daemon> /dev/null 2>&1 &)
+echo "Snappy-Switcher theme updated to $SNAPPY_THEME"

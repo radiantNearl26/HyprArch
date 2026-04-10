@@ -7,6 +7,9 @@ COLOR_MAP = {
     "red": (255, 0, 0),
     "blue": (0, 0, 255),
     "green": (0, 255, 0),
+    "orange": (255, 165, 0),
+    "purple": (128, 0, 128),
+    "brown": (165, 42, 42),
     "yellow": (255, 255, 0),
     "black": (0, 0, 0),
     "white": (255, 255, 255)
@@ -72,7 +75,14 @@ def main():
         result = get_closest_color_name(args.hex_code, COLOR_MAP)
         
         # Print ONLY the string to standard output
-        sys.stdout.write(f"{result}\n")
+        if (result == "blue"):
+            sys.stdout.write("\n")
+        elif (result == "brown"):
+            sys.stdout.write("-yellow\n")
+        elif (result == "white" or result == "black"):
+            sys.stdout.write("-grey\n")
+        else:
+            sys.stdout.write(f"-{result}\n")
         sys.exit(0) # Exit code 0 indicates success
         
     except ValueError as e:
