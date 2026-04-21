@@ -13,6 +13,8 @@ dashboard.section.header.val = {
     -- [[   ██║   ╚██████╔╝██║  ██╗██║██║ ╚████║╚██████╔╝      ███████║██║  ██║██║ ╚████║]],
     -- [[   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝       ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝]],
 
+    [[                                            ]],
+    [[                                            ]],
     [[  ███╗   ██╗███████╗ █████╗ ██████╗ ██╗     ]],
     [[  ████╗  ██║██╔════╝██╔══██╗██╔══██╗██║     ]],
     [[  ██╔██╗ ██║█████╗  ███████║██████╔╝██║     ]],
@@ -32,7 +34,7 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-    return "\nI know you'll definitely bring her to life, so keep moving forward as always..."
+    return "\n\nDying for the right cause is the most human thing one can do."
 end
 
 dashboard.section.footer.val = footer()

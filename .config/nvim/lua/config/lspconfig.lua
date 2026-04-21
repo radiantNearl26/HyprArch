@@ -1,15 +1,16 @@
-vim.lsp.config('arduino_language_server', { autostart = true }) -- Arduino
-vim.lsp.config('basedpyright', { autostart = true })            -- Python
-vim.lsp.config('bashls', { autostart = true })                  -- Bash / ZSH
-vim.lsp.config('biome', { autostart = true })                   -- JSON / JS
-vim.lsp.config('clangd', { autostart = true })                  -- C / C++
-vim.lsp.config('cssls', { autostart = true })                   -- CSS
-vim.lsp.config('dockerls', { autostart = true })                -- Docker
-vim.lsp.config('html', { autostart = true })                    -- HTML
-vim.lsp.config('hyprls', { autostart = true })                  -- Hypr configs
-vim.lsp.config('lua_ls', { autostart = true })                  -- Lua
-vim.lsp.config('markdown_oxide', { autostart = true })          -- Markdown (Obsidian)
-vim.lsp.config('systemd_ls', { autostart = true })              -- Systemd
-vim.lsp.config('textlsp', { autostart = true })                 -- Text / LATEXT
-vim.lsp.config('taplo', { autostart = true })                   -- TOML
-vim.lsp.config('yamlls', { autostart = true })                  -- YAML
+-- Use the new vim.lsp.enable API (Neovim 0.11+)
+vim.lsp.enable('arduino_language_server') -- Arduino
+vim.lsp.enable('basedpyright')            -- Python
+vim.lsp.enable('bashls')                  -- Bash / ZSH
+vim.lsp.enable('biome')                   -- JSON / JS
+vim.lsp.enable('clangd')                  -- C / C++
+vim.lsp.enable('cssls')                   -- CSS
+vim.lsp.enable('dockerls')                -- Docker
+vim.lsp.enable('html')                    -- HTML
+vim.lsp.enable('hyprls')                  -- Hypr configs
+vim.lsp.enable('lua_ls')                  -- Lua
+vim.lsp.enable('markdown_oxide')          -- Markdown (Obsidian)
+vim.lsp.enable('systemd_ls')              -- Systemd
+vim.lsp.enable('textlsp')                 -- Text / LATEXT
+vim.lsp.enable('taplo')                   -- TOML
+vim.lsp.enable('yamlls')                  -- YAML

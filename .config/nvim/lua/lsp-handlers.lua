@@ -40,12 +40,12 @@ M.setup = function()
     vim.diagnostic.config(config)
 end
 
--- Here we let the LSP prioritize null-ls formatters. Why? Normally when we install a separate formatter or linter in null-ls we want to use just them.
+-- Here we let the LSP prioritize none-ls formatters. Why? Normally when we install a separate formatter or linter in none-ls we want to use just them.
 -- if you don't prioritize any, neovim will ask you every time you format which one you want to use.
 local lsp_formatting = function(bufnr)
     vim.lsp.buf.format({
         filter = function(client)
-          return client.name == "null-ls"
+          return client.name == "none-ls"
         end,
         bufnr = bufnr,
     })

@@ -39,6 +39,14 @@ cmp.setup({
   formatting = {
     fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
+      -- Try to use lspkind if available
+      local lspkind_ok, lspkind = pcall(require, "lspkind")
+      if lspkind_ok then
+        vim_item = lspkind.cmp_format({
+          mode = 'symbol_text',
+          maxwidth = 50,
+        })(entry, vim_item)
+      end
       -- NOTE: order matters
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
