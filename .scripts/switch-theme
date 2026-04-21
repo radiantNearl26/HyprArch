@@ -69,3 +69,6 @@ sed -i "s/\(name = \).*/\1$SNAPPY_THEME/" "$CONFIG_SNAPPY"
 pkill snappy-switcher
 (snappy-switcher --daemon> /dev/null 2>&1 &)
 echo "Snappy-Switcher theme updated to $SNAPPY_THEME"
+
+# Send notification
+notify-send "Theme Switcher" "Successfully switched to $MODE mode!" -i "xcolor" 
