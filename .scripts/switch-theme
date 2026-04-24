@@ -32,19 +32,38 @@ accent=$(python $HOME/.scripts/color-extract.py $COLOR)
 echo "Accent color: $accent"
 
 if [[ "$MODE" == "dark" ]]; then
-    GTK_THEME="WhiteSur-Light"
+    GTK_THEME="WhiteSur-Light$accent:dark"
     COLOR_SCHEME="prefer-dark"
     ULAUNCHER_THEME="darkblue-ice"
     WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-dark.css
-    ACCENT="$accent:dark"
     SNAPPY_THEME="cyberpunk.ini"
+    FOLDER_THEME="mocha"
 else
-    GTK_THEME="WhiteSur-Light"
+    GTK_THEME="WhiteSur-Light$accent"
     COLOR_SCHEME="prefer-light"
     ULAUNCHER_THEME="lightblue-ice"
     WAYBAR_STYLE=$HOME/.config/waybar/style-theme/style-light.css
-    ACCENT="$accent"
     SNAPPY_THEME="catppuccin-latte.ini"
+    FOLDER_THEME="latte"
+fi
+
+# Folder icon color determination
+if [[ "$accent" == "-red" ]]; then
+    FOLDER_COLOR="rosewater"
+elif [[ "$accent" == "" ]]; then
+    FOLDER_COLOR="sapphire"
+elif [[ "$accent" == "-green" ]]; then
+    FOLDER_COLOR="teal"
+elif [[ "$accent" == "-orange" ]]; then
+    FOLDER_COLOR="peach"
+elif [[ "$accent" == "-purple" ]]; then
+    FOLDER_COLOR="lavender"
+elif [[ "$accent" == "-yellow" ]]; then
+    FOLDER_COLOR="yellow"
+elif [[ "$accent" == "-grey" ]]; then
+    FOLDER_COLOR="lavender"
+else
+    FOLDER_COLOR="lavender"
 fi
 
 # Switch waybar stylesheet
@@ -52,10 +71,10 @@ cp "$WAYBAR_STYLE" "$HOME/.config/waybar/style.css"
 echo "Swapped waybar stylesheet for $MODE mode."
 
 # Apply GSettings (for running GTK apps)
-gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME-$ACCENT" 2>/dev/null
+gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME" 2>/dev/null
 gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME" 2>/dev/null
-sed -i "s/\(env = GTK_THEME,\).*/\1$GTK_THEME$ACCENT/" "$ENV_DIR"
-export GTK_THEME="$GTK_THEME$ACCENT"
+sed -i "s/\(env = GTK_THEME,\).*/\1$GTK_THEME/" "$ENV_DIR"
+export GTK_THEME="$GTK_THEME"
 echo "GTK Theme switched to $GTK_THEME. Restart for changes!"
 
 # Update Ulauncher theme
@@ -72,3 +91,6 @@ echo "Snappy-Switcher theme updated to $SNAPPY_THEME"
 
 # Send notification
 notify-send "Theme Switcher" "Successfully switched to $MODE mode!" -i "xcolor" 
+
+# Update folder icons
+echo "Updated folder icons to cat-$FOLDER_THEME-$FOLDER_COLOR"
