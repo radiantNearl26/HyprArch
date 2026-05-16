@@ -1,5 +1,5 @@
 require('copilot-chat').setup {
-    -- model = 'gpt-4.1',       -- AI model to use
+    model = 'gemini-3.1-pro-preview',
     temperature = 0.1,       -- Lower = focused, higher = creative
     auto_insert_mode = true, -- Enter insert mode when opening
     window = {
@@ -7,7 +7,7 @@ require('copilot-chat').setup {
         width = 0.5,        -- 50% of screen width
         height = 20,        -- Fixed height in rows
         border = 'rounded', -- 'single', 'double', 'rounded', 'solid'
-        title = '🤖 AI Assistant',
+        title = '🤖 Copilot Chat',
         zindex = 100,       -- Ensure window stays on top
     },
 
