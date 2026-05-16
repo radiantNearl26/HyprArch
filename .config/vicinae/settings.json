@@ -21,7 +21,7 @@
    },
    "theme": {
       "dark": {
-         "name": "evergarden-winter",
+         "name": "pywal",
          "icon_theme": "WhiteSur"
       }
    },
@@ -29,15 +29,107 @@
       "system_info": false
    },
    "launcher_window": {
-      "opacity": 0.9,
+      "opacity": 0.8,
       "client_side_decorations": {
          "enabled": true
       }
    },
    "favorites": [
-      "applications:AppFlowy"
+      "applications:brave-browser",
+      "applications:brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default",
+      "applications:org.gnome.Nautilus",
+      "applications:org.gnome.SystemMonitor",
+      "applications:code"
    ],
    "providers": {
+      "@EvanZhouDev/store.raycast.raycast-gemini": {
+         "preferences": {
+            "defaultModel": "gemini-3.1-pro-preview",
+            "safetyThreshold": "BLOCK_NONE"
+         },
+         "entrypoints": {
+            "askAboutScreen": {
+               "enabled": false
+            },
+            "askAboutSelectedScreen": {
+               "enabled": false
+            },
+            "askAboutSelectedText": {
+               "enabled": false
+            },
+            "comment": {
+               "enabled": false
+            },
+            "friendly": {
+               "enabled": false
+            },
+            "grammar": {
+               "enabled": false
+            },
+            "history": {
+               "enabled": false
+            },
+            "longer": {
+               "enabled": true
+            },
+            "professional": {
+               "enabled": false
+            },
+            "shorter": {
+               "enabled": true
+            },
+            "synonym": {
+               "enabled": false
+            },
+            "translate": {
+               "enabled": false
+            }
+         }
+      },
+      "@Gelei/store.vicinae.bluetooth": {
+         "enabled": false,
+         "entrypoints": {
+            "devices": {
+               "enabled": true
+            }
+         }
+      },
+      "@dagimg-dot/store.vicinae.player-pilot": {
+         "enabled": true,
+         "entrypoints": {
+            "next-track": {
+               "enabled": false
+            },
+            "pause-track": {
+               "enabled": false
+            },
+            "previous-track": {
+               "enabled": false
+            },
+            "resume-track": {
+               "enabled": false
+            }
+         }
+      },
+      "@dagimg-dot/store.vicinae.wifi-commander": {
+         "entrypoints": {
+            "restart-wifi": {
+               "enabled": false
+            },
+            "toggle-wifi-off": {
+               "enabled": false
+            },
+            "toggle-wifi-on": {
+               "enabled": false
+            }
+         }
+      },
+      "@fbosch/store.vicinae.flathub-search": {
+         "enabled": true
+      },
+      "@knoopx/store.vicinae.systemd": {
+         "enabled": true
+      },
       "applications": {
          "entrypoints": {
             "Alacritty": {
@@ -100,6 +192,10 @@
          "enabled": false
       },
       "calculator": {
+         "preferences": {
+            "backend": "qalculate",
+            "refreshRatesOnStartup": true
+         },
          "entrypoints": {
             "history": {
                "enabled": false
@@ -144,7 +240,7 @@
                "enabled": false
             },
             "open-config-file": {
-               "enabled": true
+               "enabled": false
             },
             "open-default-config": {
                "enabled": false
@@ -165,13 +261,14 @@
                "enabled": false
             },
             "settings": {
-               "enabled": false
+               "enabled": true
             },
             "sponsor": {
                "enabled": false
             },
             "store": {
-               "enabled": false
+               "alias": "ext",
+               "enabled": true
             }
          }
       },
@@ -201,7 +298,7 @@
          "enabled": false
       },
       "raycast-compat": {
-         "enabled": false,
+         "enabled": true,
          "entrypoints": {
             "store": {
                "enabled": true
@@ -223,6 +320,7 @@
          "enabled": true,
          "entrypoints": {
             "browse-apps": {
+               "alias": "apps",
                "enabled": true
             },
             "run": {
