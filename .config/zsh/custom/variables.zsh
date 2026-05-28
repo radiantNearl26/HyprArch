@@ -54,8 +54,10 @@ export TERMINAL="alacritty"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# PATH directory
+# Export directories to $PATH
+export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:~/.scripts
 
 # Set the default text editor for Git
 git config --global core.editor nvim
