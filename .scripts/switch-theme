@@ -65,14 +65,14 @@ if [[ "$MODE" == "dark" ]]; then
     ULAUNCHER_THEME="darkblue-ice"
     SNAPPY_THEME="cyberpunk.ini"
     FOLDER_THEME="mocha"
-    VICINAE_THEME="evergarden-winter"
+    VICINAE_THEME="pywal"
 else
     GTK_THEME="WhiteSur-Light$accent"
     COLOR_SCHEME="prefer-light"
     ULAUNCHER_THEME="lightblue-ice"
     SNAPPY_THEME="catppuccin-latte.ini"
     FOLDER_THEME="latte"
-    VICINAE_THEME="evergarden-summer"
+    VICINAE_THEME="pywal"
 fi
 
 # Folder icon color determination
@@ -146,4 +146,4 @@ else
 fi
 
 # Send notification
-notify-send "Theme Switcher" "Successfully switched to $MODE mode!" -i "xcolor" 
+notify-send "Theme Switcher" "Successfully switched to $MODE mode." -i "xcolor" 
