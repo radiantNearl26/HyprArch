@@ -170,7 +170,7 @@
   
   "clock": {
     "format": "{:%H:%M}",
-    "format-alt": "{:%A %d.%m}",
+    "format-alt": "{:%A, %d.%m.%Y}",
     "tooltip-format": "<tt><big>{calendar}</big></tt>",
     "calendar": {
       "mode": "month",
@@ -285,6 +285,7 @@
     "on-click": "pavucontrol",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "on-click-right": "notify-send -i 'mediacontrol' 'Fist my bump!' 'Launching easyeffects in background'; easyeffects --gapplication-service",
     "smooth-scrolling-threshold": 1
   },
   "bluetooth": {
@@ -297,8 +298,8 @@
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "overskride",
-    "on-click-right": "alacritty -e 'bluetui'"
+    "on-click": "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/devices",
+    "on-click-right": "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/scan"
   },
   "network": {
     "format": "{icon}",
@@ -317,6 +318,7 @@
     "tooltip-format-ethernet": " {ifname}: {ipaddr} | {frequency} MHz{icon} ",
     "tooltip-format-disconnected": "⚠ Disconnected.",
     "tooltip": true,
-    "on-click": "alacritty -e 'nmtui'"
+    "on-click": "vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/scan-wifi",
+    "on-click-right": "vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/restart-wifi"
   },
 }
