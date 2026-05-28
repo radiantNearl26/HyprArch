@@ -20,10 +20,6 @@ plugins=(alias-finder aliases archlinux history git npm zsh-autosuggestions zsh-
 zstyle ':omz:plugins:alias-finder' autoload yes
 source $HOME/.config/zsh/ohmyzsh/oh-my-zsh.sh
 
-# Export directories to $PATH
-export PATH=$PATH:~/.spicetify
-export PATH=$PATH:~/.local/bin/
-
 # Enable oh-my-posh prompt
 # Only run oh-my-posh if NOT in VS Code
 if [[ "$TERM_PROGRAM" != "vscode" ]]; then

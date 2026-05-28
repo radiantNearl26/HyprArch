@@ -1,4 +1,3 @@
-#
 # Basic Commands
 #
 
@@ -21,6 +20,7 @@ alias pb="systemctl poweroff"
 alias wgu="wg-quick up US-12"
 alias wgd="wg-quick down US-12"
 alias ez="easyeffects --gapplication-service"
+alias cat="bat"
 
 alias launch="hyprctl dispatch exec"
 alias pkill="pkill -e"
@@ -32,7 +32,6 @@ alias apy="source venv/bin/activate"
 alias mount-oth="sudo mkdir /run/media/Asmit/Others && sudo mount /dev/sda1 /run/media/Asmit/Others"
 alias mount-bkp="sudo mkdir /run/media/Asmit/Backup && sudo mount /dev/sda2 /run/media/Asmit/Backup"
 
-#
 # A safer approach to rm
 #
 alias rm="trash-put"
@@ -45,13 +44,14 @@ alias rmdel="trash-rm"
 #
 alias nvhy="nvim $HOME/.config/hypr/hyprsource/"
 alias nvzs="nvim $HOME/.config/zsh/custom/"
+alias nvconf="nvim $HOME/.config/"
+alias nvnvim="nvim $HOME/.config/nvim/"
+alias nvsh="nvim $HOME/.scripts/"
 
-#
 # Yay (along with pacman) Commands
 # NOTE: Will do later:
 
 
-#
 # Dotfiles (git) Commands
 #
 
@@ -69,6 +69,7 @@ alias drh="dot reset HEAD"
 alias dmv="dot mv"
 alias dcout="dot checkout --"
 alias ddiff="dot diff"
+alias ddiffs="dot diff --staged"
 
 alias drs="dot restore --staged"
 alias dr="dot restore --"
@@ -82,7 +83,6 @@ alias dlsstaged="dot ls-files -s --name-only"
 alias dfiles="ls --group-directories-first --color=auto -Rd $(dot ls-tree -r $(dot branch | grep \* | cut -d " " -f2) --name-only)"
 alias ddir="ls --group-directories-first --color=auto -d $(dot ls-tree -dr $(dot branch | grep \* | cut -d " " -f2) --name-only)"
 
-#
 # Startpage (git) Commands
 #
 
