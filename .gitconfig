@@ -1,0 +1,9 @@
+[user]
+	name = radiantNearl26
+	email = asmitdaschoudhury@proton.me
+[core]
+	editor = nvim
+[merge]
+	tool = vimdiff
+[init]
+	defaultBranch = main
