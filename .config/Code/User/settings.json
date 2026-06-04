@@ -1,11 +1,13 @@
 {
   /* Workbench configuration */
   "workbench.colorTheme": "Wal Bordered",
-  "workbench.preferredDarkColorTheme": "Wal Bordered",
   "workbench.preferredLightColorTheme": "Subaru (Light)",
-  "workbench.iconTheme": "flow-dim",
+  "workbench.preferredDarkColorTheme": "Wal Bordered",
+  "workbench.iconTheme": "symbols",
   "workbench.productIconTheme": "Tabler",
   "workbench.activityBar.location": "top",
+  "workbench.navigationControl.enabled": false,
+  "workbench.browser.showInTitleBar": true,
   "window.autoDetectColorScheme": true,
 
   /* Editor configuration */
@@ -15,7 +17,6 @@
   "editor.formatOnPaste": true,
   "editor.mouseWheelZoom": true,
   "editor.wordWrap": "on",
-  "editor.aiStats.enabled": true,
   "editor.inlayHints.padding": true,
   "editor.cursorBlinking": "phase",
   "editor.wrapOnEscapedLineFeeds": true,
@@ -24,13 +25,18 @@
   "editor.smoothScrolling": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.lineNumbers": "relative",
   "workbench.list.smoothScrolling": true,
-  "terminal.integrated.smoothScrolling": true,
   "terminal.integrated.initialHint": false,
+  "terminal.integrated.smoothScrolling": true,
 
   /* File Explorer configuration */
   "explorer.confirmDelete": false,
   "notebook.output.wordWrap": true,
+  "notebook.lineNumbers": "on",
+  "notebook.formatOnSave.enabled": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 5000,
 
   /* GitHub Copilot configuration */
   "github.copilot.nextEditSuggestions.enabled": true,
@@ -46,8 +52,7 @@
   "github.copilot.chat.anthropic.tools.websearch.enabled": true,
   "github.copilot.chat.codesearch.enabled": true,
   "chat.mcp.gallery.enabled": true,
-  "inlineChat.holdToSpeech": false,
-  "chat.commandCenter.enabled": false,
+  "chat.fontSize": 14,
   "chat.useAgentSkills": true,
   "chat.viewSessions.orientation": "stacked",
   "chat.checkpoints.showFileChanges": true,
@@ -57,7 +62,6 @@
   "chat.viewProgressBadge.enabled": true,
   "chat.viewSessions.enabled": false,
   "chat.useNestedAgentsMdFiles": true,
-  "inlineChat.enableV2": true,
 
   /* Python configuration */
   "python.languageServer": "Pylance",
@@ -85,9 +89,4 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.openRepositoryInParentFolders": "always",
-  "notebook.lineNumbers": "on",
-  "files.autoSave": "afterDelay",
-  "notebook.formatOnSave.enabled": true,
-  "workbench.navigationControl.enabled": false,
-  "workbench.browser.showInTitleBar": true,
 }
