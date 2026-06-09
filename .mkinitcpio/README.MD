@@ -51,5 +51,5 @@ This guide will help you set up your virtual consoles (tty) to use the colorsche
    ```
 
 > [!NOTE]
-> Ensure the file paths and names in the build hook file match your setup.
-> Also, this guide works for my Arch Linux setup, where i use mkinitcpio for initramfs generation. If you are using a different distribution or initramfs generator, the steps may vary.
+> - Ensure the file paths and names in the build hook file match your setup.
+> - Also, this guide works for my Arch Linux setup, where i use mkinitcpio for initramfs generation. If you are using a different distribution or initramfs generator, the steps may vary.
