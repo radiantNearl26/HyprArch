@@ -16,6 +16,15 @@ window#waybar {
     border-bottom: 0px solid alpha(@background, 0.85);
 }
 
+window#waybar.overlay {
+    background: alpha(@background, 0);
+    color: alpha(@main-color, 0.5);
+}
+
+#custom-playerinfo {
+    color: @text-color;
+}
+
 #window {
     padding: 2px 10px;
     margin: 0px 0px 0px 0px;
@@ -35,11 +44,10 @@ tooltip label {
     color: @foreground;
 }
 
+#custom-arrow-left,
 #custom-arrow-right {
     color: alpha(lighter(@main-color), 0.8);
-    margin: 0px 4px;
-    margin: 0px 2px 4px 4px;
-
+    margin: 4px 4px 4px 4px;
 }
 
 #cpu,
@@ -69,7 +77,7 @@ tooltip label {
 #network,
 #bluetooth,
 #backlight {
-    padding: 0px 5px 0px 5px;
+    padding: 0px 9px;
     color: lighter(@main-color);
 }
 
@@ -108,22 +116,42 @@ tooltip label {
     color: lighter(@main-color);
 }
 
-#custom-arrow-left {
-    color: alpha(lighter(@main-color), 0.8);
-    margin: 4px 4px 4px 4px;
+#tray > .passive {
+    -gtk-icon-effect: dim;
 }
 
-
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
 
 #custom-notifications,
 #custom-updates,
 #custom-theme-switcher {
     padding: 0px 10px;
-    margin: 6px 6px;
+    margin: 6px 8px;
     color: @main-color;
     background: alpha(darker(@main-color), 0.3);
     color: @text-color;
     border-radius: 12px;
+}
+
+#custom-cpucat {
+  font-family: "Waycat", monospace;
+  font-size: 32px;
+  font-weight: bold;
+  color: @main-color;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#custom-cpucat:hover {
+  color: lighter(@main-color);
+}
+
+#custom-privacydots {
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 #clock {
@@ -165,6 +193,7 @@ tooltip label {
     background: alpha(lighter(@main-color), 0.7);
     border-radius: 10px;
 }
+
 
 
 #taskbar {

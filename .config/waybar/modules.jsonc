@@ -2,7 +2,7 @@
   //Others - Important
   "custom/arrow-left": {
     "format": "󰁒",
-    "tooltip": false
+"tooltip": false
   },
   
   "custom/arrow-right": {
@@ -88,7 +88,6 @@
     "escape": true
   },
 
-
   //Top Bar - modules-right
   "group/tools": {
     "orientation": "inherit",
@@ -98,35 +97,103 @@
     },
     "modules": ["custom/arrow-left","custom/theme-dark","custom/theme-light","custom/record", "custom/section", "custom/stop"]
   },
+
   "custom/theme-dark": {
     "format": "󰏘",
     "tooltip": true,
     "tooltip-format": "Switch Theme to Dark",
     "on-click": "bash ~/.scripts/switch-theme dark"
   },
+
   "custom/theme-light": {
     "format": "󰏘",
     "tooltip": true,
     "tooltip-format": "Switch Theme to Light",
     "on-click": "bash ~/.scripts/switch-theme light"
   },
+
   "custom/record": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Record Screen",
     "on-click": "bash ~/.scripts/record.sh fullscreen"
   },
+
   "custom/stop": {
     "format": "󰻃",
     "tooltip": true,
     "tooltip-format": "Stop Recording",
     "on-click": "bash ~/.scripts/record.sh stop"
   },
+
   "custom/section": {
     "format": "",
     "tooltip": true,
     "tooltip-format": "Record Section",
     "on-click": "bash ~/.config/hypr/scripts/record.sh section"
+  },
+
+  "network": {
+    "format": "{icon} Anonymous",
+    "format-icons": {
+      "wifi": [""],
+      "ethernet": ["󰈁"],
+      "disconnected": [""]
+    },
+    "format-disabled": "󰖪 Disabled",
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀 Ethernet",
+    "format-disconnected": "󰖪 Disconnected",
+    "format-linked": "󰈀 Linked [⚠]",
+    "interval": 5,
+    "tooltip-format": "{ipaddr}",
+	"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+    "tooltip-format-ethernet": " {ifname}: {ipaddr} | {frequency} MHz{icon} ",
+    "tooltip-format-disconnected": "⚠ Disconnected.",
+    "tooltip": true,
+    "on-click": "notify-send -i 'networkmanager' 'Network Manager' 'Searching for networks'; vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/scan-wifi",
+    "on-click-right": "notify-send -i 'networkmanager' 'Network Manager' 'Restarting Wi-Fi'; vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/restart-wifi",
+    "on-click-middle": "alacritty -e 'nmtui'"
+  },
+
+  "bluetooth": {
+    "format-on": " Disconnected",
+    "format-off": "󰂲 Disabled",
+    "format-disabled": "󰂲 Disabled",
+    "format-connected": " {device_battery_percentage}%",
+    "tooltip": true,
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "notify-send -i 'bluetooth' 'Bluetooth Manager' 'Listing paired devices'; vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/devices",
+    "on-click-right": "notify-send -i 'bluetooth' 'Bluetooth Manager' 'Searching for devices'; vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/scan",
+    "on-click-middle": "blueman-manager"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃟", "󰃠"],
+    "on-scroll-down": "brightnessctl s +2%",
+    "on-scroll-up": "brightnessctl s -2%",
+    "on-click-middle": "brightnessctl s 50%"
+  },
+
+  "pulseaudio": {
+	"on-click": "pactl set-sink-mute 45 toggle",
+    "tooltip-format": "{volume}% {icon} | {desc}",
+	"format": "{icon} {volume}%",
+   	"format-muted": "󰖁 Muted",
+   	"format-icons": {
+      "default": ["", "", ""]
+    },
+    "on-click-middle": "changevolume mute",
+    "on-click": "pavucontrol",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "on-click-right": "notify-send -i 'mediacontrol' 'Fist my bump!' 'Launching easyeffects in background'; easyeffects --gapplication-service",
+    "smooth-scrolling-threshold": 1
   },
   
   "group/power": {
@@ -137,6 +204,7 @@
     },
     "modules": ["battery", "power-profiles-daemon"]
   },
+
   "battery": {
     "states": {
       "good": 95,
@@ -145,7 +213,7 @@
     },
     "on-click": "cpupower-gui",
     "format": "{icon} {capacity}%",
-    "format-charging": "<b>{icon}  {capacity}%</b>",
+    "format-charging": "<b> {capacity}%</b>",
     "format-full": "<span color='#82A55F'><b>{icon}</b></span> {capacity}%",
     "format-icons": [
       "󰁻",
@@ -157,6 +225,7 @@
     ],
     "tooltip-format": "{timeTo} ~ {power:4.2f} Watts"
   },
+
   "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip": true,
@@ -200,13 +269,13 @@
     "on-click-middle": "close",
     "ignore-list": [
         "ulauncher",
-        "rofi",
         "hyprlock",
-        "emote",
-        "smile"
     ]
   },
-  
+
+  "custom/cpucat": {
+    "exec":"~/.scripts/catloop.sh",
+  },
   
   // Bottom Bar - modules-center
   "custom/playerlabel": {
@@ -222,21 +291,41 @@
     "tooltip": true,
     "tooltip-format": "Now Playing: {}"
   },
-  
-  
+
+  "custom/playerinfo": {
+    "format": "&lt; {} &gt;",
+    "exec": "~/.scripts/playerinfo.sh",
+    "escape": true,
+    "return-type": "json",
+    "interval": 1,
+    "tooltip": true,
+    "on-click-middle": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-left": "playerctl previous",
+    "on-click-middle": "playerctl previous",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "tooltip-format": "Now Playing: {}"
+  },
+
   // Bottom Bar - modules-right
   "group/sys": {
     "orientation": "inherit",
     "modules": ["cpu","memory","disk"]
   },
+
   "cpu": {
     "format": "󰘚 {usage}󱉸",
     "on-click": "alacritty -e 'htop'"
   },
+
   "memory": {
     "format": " {:2}󱉸",
     "on-click": "alacritty -e 'htop'"
   },
+
   "disk": {
     "interval": 600,
     "format": "󰆼 {percentage_used}󱉸",
@@ -258,67 +347,16 @@
       "transition-duration": 300,
       "transition-left-to-right": false
     },
-    "modules": ["custom/arrow-left","network","bluetooth","backlight","pulseaudio"]
+    "modules": ["custom/arrow-left", "custom/privacydots"]
   },
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon}",
-    "format-icons": ["󰃟", "󰃠"],
-    "on-scroll-down": "brightnessctl s +2%",
-    "on-scroll-up": "brightnessctl s -2%"
-  },
-  "pulseaudio": {
-    "format": "{icon}",
-    "format-bluetooth": "{icon}",
-    "tooltip-format": "{volume}% {icon} | {desc}",
-    "format-muted": "󰖁",
-    "format-icons": {
-      "headphones": "",
-      "handsfree": "󰋍",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": " ",
-      "default": ["󰕿", "󰖀", "󰕾"]
-    },
-    "on-click-middle": "changevolume mute",
-    "on-click": "pavucontrol",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
-    "on-click-right": "notify-send -i 'mediacontrol' 'Fist my bump!' 'Launching easyeffects in background'; easyeffects --gapplication-service",
-    "smooth-scrolling-threshold": 1
-  },
-  "bluetooth": {
-    "format-on": "",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "format-connected": "",
+
+  "custom/privacydots": {
+    "exec": "~/.scripts/privacy-dots.sh",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{text}",
     "tooltip": true,
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/devices",
-    "on-click-right": "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/scan"
-  },
-  "network": {
-    "format": "{icon}",
-    "format-icons": {
-      "wifi": [""],
-      "ethernet": ["󰈁"],
-      "disconnected": [""]
-    },
-    "format-wifi": "",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰖪",
-    "format-linked": "󰈀",
-    "interval": 5,
-    "tooltip-format": "{ipaddr}",
-    "tooltip-format-wifi": " {essid}: ({signalStrength}%) \n{ipaddr} @{frequency}MHz {icon} ",
-    "tooltip-format-ethernet": " {ifname}: {ipaddr} | {frequency} MHz{icon} ",
-    "tooltip-format-disconnected": "⚠ Disconnected.",
-    "tooltip": true,
-    "on-click": "vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/scan-wifi",
-    "on-click-right": "vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/restart-wifi"
+    "escape": false,
+    "markup": "pango"
   },
 }

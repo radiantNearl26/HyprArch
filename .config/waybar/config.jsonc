@@ -19,9 +19,28 @@
   
     "modules-right": [
       "group/tools",
+      "network",
+      "bluetooth",
+      "backlight",
+      "pulseaudio",
       "group/power",
       "clock"
     ]
+},
+{
+    "name": "overlay",
+    "height": 45,
+    "width": 300,
+    "layer": "bottom",
+    "position": "bottom", 
+    "margin-bottom": -51,
+    "mode": "overlay",
+
+    "modules-center": ["custom/cava"],
+    "custom/cava": {
+        "format": "{}",
+        "exec": "~/.scripts/cava.sh"
+    },
 },
 {
     "output":["eDP-1","HDMI-A-1"],
@@ -31,16 +50,17 @@
     "reload_style_on_change": true,
     "include": ["~/.config/waybar/modules.jsonc"],
     "modules-left": [
-        "wlr/taskbar"
+      "wlr/taskbar",
+      "custom/cpucat"
     ],
 
     "modules-center": [
-        "custom/playerlabel"
+      "custom/playerinfo"
     ],
 
     "modules-right": [
-        "group/control-center",
-        "custom/weather",
-        "group/sys"
+      "group/control-center",
+      "custom/weather",
+      "group/sys"
     ]
 }]
