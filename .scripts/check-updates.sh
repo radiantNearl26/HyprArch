@@ -72,7 +72,7 @@ format_pacman_updates() {
   echo "$(format_updates "$updates" "$PACMAN_HEADER" "$add_newline")"
 }
 
-pacman_updates=$(checkupdates)
+pacman_updates=$(pacman -Qu)
 pacman_updates_count=$(count_updates "$pacman_updates")
 
 aur_updates=$(yay -Qua)
