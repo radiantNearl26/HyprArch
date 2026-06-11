@@ -5,7 +5,6 @@ alias nv="nvim"
 alias nm="nmtui"
 alias fm="ranger"
 alias smile="it.mijorus.smile" #can't use smile to exec since its a flatpak maybe (need to use full package name)
-alias ct="cointop"
 alias cls="clear && colorscript -e "crunchbang-mini""
 alias q="exit"
 alias pk="pkill -e"
@@ -20,7 +19,8 @@ alias pb="systemctl poweroff"
 alias wgu="wg-quick up US-12"
 alias wgd="wg-quick down US-12"
 alias ez="easyeffects --gapplication-service"
-alias cat="bat"
+alias show-hist="cat $HISTFILE | fzf"
+alias fzf-preview="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 
 alias launch="hyprctl dispatch exec"
 alias pkill="pkill -e"
@@ -56,32 +56,25 @@ alias nvsh="nvim $HOME/.scripts/"
 #
 
 alias dot="git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME""
-alias dcom="dot commit -m"
-alias damend="dot commit --amend"
-alias dadd="dot add"
-alias dstat="dot status"
-alias dlog='dot log --pretty=format:"%h - %an, %ar: %s" --graph HEAD'
+alias dadd="dot add" # add file contents to the index
+alias dcom="dot commit -m" # save changes to the local repository
+alias damend="dot commit --amend" # undo the last commit and edit the commit message
+alias dpush="dot push -u origin main" # push changes to the main branch of the remote repository
 
-alias dpush="dot push -u origin main"
-# alias dparm='dot push -u origin termux-xfce'
+alias ddiff="dot diff" # show changes between commits & commit and working tree
+alias ddiffs="dot diff --staged" # show changes between staged changes and last commit
+alias dr="dot restore" # discard changes in working tree
+alias drs="dot restore --staged" # unstage but keep in working tree (keep changes)
 
-alias drh="dot reset HEAD"
-alias dmv="dot mv"
-alias dcout="dot checkout --"
-alias ddiff="dot diff"
-alias ddiffs="dot diff --staged"
+alias dstat="dot status" # show the working tree status
+alias dlog='dot log --pretty=format:"%h - %an, %ar: %s" --graph HEAD' # show commit logs
+alias dshow="dot show" # show info about a commit
+alias dfiles="dot ls-files" # list all files in the index
 
-alias drs="dot restore --staged"
-alias dr="dot restore --"
+alias dmv="dot mv" # move/rename a file, a directory, or a symlink
+alias drm="dot rm" # remove from both index and working tree
+alias drmc="dot rm --cached" # remove from index but keep in working tree
 
-alias dlsname="dot ls-files --name-only"
-alias dlsdel="dot ls-files -d --name-only"
-alias dlsmod="dot ls-files -m --name-only"
-alias dlsignore="dot ls-files -i --name-only"
-alias dlsstaged="dot ls-files -s --name-only"
-
-alias dfiles="ls --group-directories-first --color=auto -Rd $(dot ls-tree -r $(dot branch | grep \* | cut -d " " -f2) --name-only)"
-alias ddir="ls --group-directories-first --color=auto -d $(dot ls-tree -dr $(dot branch | grep \* | cut -d " " -f2) --name-only)"
 
 # Startpage (git) Commands
 #
