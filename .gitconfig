@@ -3,6 +3,7 @@
 	email = asmitdaschoudhury@proton.me
 [core]
 	editor = nvim
+	pager = bat
 [merge]
 	tool = vimdiff
 [init]

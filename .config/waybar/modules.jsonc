@@ -275,6 +275,9 @@
 
   "custom/cpucat": {
     "exec":"~/.scripts/catloop.sh",
+    "tooltip": true,
+    "tooltip-format": "Magic ✨",
+    "on-click": "alacritty -e 'nyancat'",
   },
   
   // Bottom Bar - modules-center

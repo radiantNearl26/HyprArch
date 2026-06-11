@@ -46,8 +46,8 @@ export ZSH_COMPDUMP="$ZDOTDIR/zsh-compdump/.zcompdump"
 # Default apps
 export EDITOR="nvim"
 # export BROWSER="ungoogled-chromium-bin" # INFO: Disabled due to stability issues.
-export BROWSER="librewolf-bin" 
-export PAGER="less"
+export BROWSER="brave" 
+export PAGER="bat"
 export TERMINAL="alacritty"
 
 # Default language and locale
@@ -59,10 +59,8 @@ export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:~/.scripts
 
-# Set the default text editor for Git
-git config --global core.editor nvim
-# Set the default merge tool for Git
-git config --global merge.tool vimdiff
-
 # Default permissions for newly created files and directories
 umask 022 # User Mask: user = rwe && else = re
+
+# Tweaks for Gaming
+RADV_PERFTEST=aco

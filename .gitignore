@@ -11,7 +11,11 @@
 !README.md
 !.dotfiles-guide.md
 !.config/Code/User/settings.json
+!.fonts
+!.gitconfig
 !.gitignore
+!.mkinitcpio
+!.efibootmgr
 !.config/oh-my-posh/powerlevel10k_lean.omp.json
 
 # Also heres the folders/files inside .config which needs to be ignored
