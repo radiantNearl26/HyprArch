@@ -4286,8 +4286,8 @@ StWidget.focused .app-grid-running-dot {
   color: #363636 !important;
   border-radius: 24px;
   padding: 12px;
-  margin: 8px 24px 0;
   border: none !important;
+  margin: 8px 0 0;
 }
 
 .quick-toggle-menu .popup-menu-item {
