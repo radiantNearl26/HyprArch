@@ -32,7 +32,7 @@
     "modules": ["custom/arrow-right","tray"]
   },
   "tray": {
-    "spacing": 8
+    "spacing": 10
   },
 
 
@@ -340,8 +340,10 @@
     "format": "{}",
     "tooltip": true,
     "interval": 3600,
-    "exec": "wttrbar --nerd --hide-conditions --location 'West Bengal' --custom-indicator '{ICON} {temp_C}°C'",
-    "return-type": "json"
+    "exec": "wttrbar --nerd --hide-conditions --location 'Kolkata' --custom-indicator '{ICON} {temp_C}°C'",
+    "return-type": "json",
+    "on-click": "gnome-weather",
+    "on-click-right": "solanum"
   },
   
   "group/control-center": {
