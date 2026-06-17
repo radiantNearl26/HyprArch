@@ -1,6 +1,8 @@
-#
-# ~/.zshenv
-#
+#      _   __ ___    ___   ____ ___    ___   __    ____ ____
+#     | | / // _ |  / _ \ /  _// _ |  / _ ) / /   / __// __/
+#     | |/ // __ | / , _/_/ / / __ | / _  |/ /__ / _/ _\ \  
+#     |___//_/ |_|/_/|_|/___//_/ |_|/____//____//___//___/  
+# NOTE: This contains the system specific variables. Hyprland specific (theming and wayland) ones are stored in the env_vars.conf file at $HOME/.config/hypr/env_vars.conf.
 
 # zsh config directory
 export ZDOTDIR="$HOME/.config/zsh"

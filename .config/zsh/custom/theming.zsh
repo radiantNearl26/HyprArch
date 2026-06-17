@@ -1,3 +1,9 @@
+#     ______ __ __ ____ __  ___ ____ _  __ _____
+#    /_  __// // // __//  |/  //  _// |/ // ___/
+#     / /  / _  // _/ / /|_/ /_/ / /    // (_ / 
+#    /_/  /_//_//___//_/  /_//___//_/|_/ \___/  
+# NOTE: Theming is handled by pywal. Ensure it is installed.
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

@@ -1,3 +1,9 @@
+#       __ __ ______  __ ___   ____ _  __ ___   ____
+#      / //_// __/\ \/ // _ ) /  _// |/ // _ \ / __/
+#     / ,<  / _/   \  // _  |_/ / /    // // /_\ \  
+#    /_/|_|/___/   /_//____//___//_/|_//____//___/  
+#                                                   
+
 # Reseting terminal with escape sequences
 autoload -Uz add-zsh-hook
 function reset_broken_terminal () {

@@ -1,6 +1,8 @@
-#
-# $ZCUSDIR/history.zsh
-#
+#       __ __ ____ ____ ______ ____   ___ __  __
+#      / // //  _// __//_  __// __ \ / _ \\ \/ /
+#     / _  /_/ / _\ \   / /  / /_/ // , _/ \  / 
+#    /_//_//___//___/  /_/   \____//_/|_|  /_/  
+# NOTE: This is just the settings, not the actual history file. The history file is located at $HISTFILE.
 
 # History retention values
 SAVEHIST=100000 #100k
