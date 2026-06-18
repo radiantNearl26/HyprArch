@@ -1,0 +1,14 @@
+#!/bin/bash
+notify-send -i "xcolor" "Theme Switcher" "Light Mode or Dark Mode" \
+  --action="light=Light Mode" \
+  --action="dark=Dark Mode" \
+  | while read -r action; do
+    case "$action" in
+      light)
+          zsh .scripts/switch-theme light
+        ;;
+      dark)
+          zsh .scripts/switch-theme dark
+        ;;
+    esac
+  done

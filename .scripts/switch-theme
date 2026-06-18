@@ -60,7 +60,7 @@ else
 fi
 
 if [[ "$MODE" == "dark" ]]; then
-    GTK_THEME="WhiteSur-Light$accent:dark"
+    GTK_THEME="WhiteSur-Dark$accent:dark"
     COLOR_SCHEME="prefer-dark"
     ULAUNCHER_THEME="darkblue-ice"
     SNAPPY_THEME="cyberpunk.ini"

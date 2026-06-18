@@ -1,0 +1,20 @@
+#!/bin/bash
+
+TARGET_FILE="$HOME/.config/hypr/hyprsource/monitors.conf"
+
+notify-send -i "display" "WARNING" "Toggle your primary display?" \
+  --action="yes=Confirm" \
+  --action="no=Cancel" \
+  | while read -r action; do
+    case "$action" in
+      yes)
+        awk -i inplace '!done && /eDP-1/ { 
+            if (/eDP-1, disable/) sub(/eDP-1, disable/, "eDP-1") 
+            else sub(/eDP-1/, "eDP-1, disable")
+            done = 1 
+        } 1' ~/.config/hypr/hyprsource/monitors.conf
+        ;;
+      no)
+        ;;
+    esac
+  done
