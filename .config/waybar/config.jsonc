@@ -9,14 +9,12 @@
       "hyprland/window",
       "group/utils"
     ],
-    
     "modules-center": [
       "custom/updates",
       "hyprland/workspaces",
       "custom/notifications"
       
     ],
-  
     "modules-right": [
       "group/tools",
       "network",

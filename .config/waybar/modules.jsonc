@@ -2,7 +2,7 @@
   //Others - Important
   "custom/arrow-left": {
     "format": "󰁒",
-"tooltip": false
+    "tooltip": false
   },
   
   "custom/arrow-right": {
@@ -31,6 +31,7 @@
     },
     "modules": ["custom/arrow-right","tray"]
   },
+
   "tray": {
     "spacing": 10
   },
@@ -83,8 +84,9 @@
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
+    "on-click": "swaync-client -t -sw", //toggles panel
+    "on-click-right": "swaync-client -d -sw", //toggles DND
+    "on-click-middle": "swaync-client -R -rs -sw; notify-send -i 'cs-notifications' 'Fist my bump' 'Reloaded config for swaync'", // reloads config
     "escape": true
   },
 
@@ -146,11 +148,11 @@
     "format-disconnected": "󰖪 Disconnected",
     "format-linked": "󰈀 Linked [⚠]",
     "interval": 5,
+    "tooltip": true,
     "tooltip-format": "{ipaddr}",
 	"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
     "tooltip-format-ethernet": " {ifname}: {ipaddr} | {frequency} MHz{icon} ",
     "tooltip-format-disconnected": "⚠ Disconnected.",
-    "tooltip": true,
     "on-click": "notify-send -i 'networkmanager' 'Network Manager' 'Searching for networks'; vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/scan-wifi",
     "on-click-right": "notify-send -i 'networkmanager' 'Network Manager' 'Restarting Wi-Fi'; vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/restart-wifi",
     "on-click-middle": "alacritty -e 'nmtui'"
@@ -161,6 +163,7 @@
     "format-off": "󰂲 Disabled",
     "format-disabled": "󰂲 Disabled",
     "format-connected": " {device_battery_percentage}%",
+    "interval": 5,
     "tooltip": true,
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
@@ -175,6 +178,8 @@
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
     "format-icons": ["󰃟", "󰃠"],
+    "tooltip": true,
+    "tooltip-format": "Intel Backlight: {percent}%",
     "on-scroll-down": "brightnessctl s +2%",
     "on-scroll-up": "brightnessctl s -2%",
     "on-click-middle": "brightnessctl s 50%"
@@ -182,17 +187,18 @@
 
   "pulseaudio": {
 	"on-click": "pactl set-sink-mute 45 toggle",
+    "tooltip": true,
     "tooltip-format": "{volume}% {icon} | {desc}",
 	"format": "{icon} {volume}%",
    	"format-muted": "󰖁 Muted",
    	"format-icons": {
       "default": ["", "", ""]
     },
-    "on-click-middle": "changevolume mute",
     "on-click": "pavucontrol",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "notify-send -i 'mediacontrol' 'Fist my bump!' 'Launching easyeffects in background'; easyeffects --gapplication-service",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
     "smooth-scrolling-threshold": 1
   },
   
@@ -223,6 +229,7 @@
       "󰂂",
       "󰁹"
     ],
+    "tooltip": true,
     "tooltip-format": "{timeTo} ~ {power:4.2f} Watts"
   },
 
@@ -240,6 +247,7 @@
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%A, %d.%m.%Y}",
+    "tooltip": true,
     "tooltip-format": "<tt><big>{calendar}</big></tt>",
     "calendar": {
       "mode": "month",
@@ -264,6 +272,7 @@
     "format": "{icon}",
     "icon-size": 20,
     "all-outputs": true,
+    "tooltip": true,
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
@@ -277,31 +286,18 @@
     "exec":"~/.scripts/catloop.sh",
     "tooltip": true,
     "tooltip-format": "Magic ✨",
-    "on-click": "alacritty -e 'nyancat'",
+    "on-click": "alacritty -e 'nyancat'"
   },
   
   // Bottom Bar - modules-center
-  "custom/playerlabel": {
-    "format": "{}",
-    "return-type": "json",
-    "max-length": 40,
-    "exec": "playerctl metadata --format '{\"text\": \"{{artist}}: {{markup_escape(title)}}\", \"tooltip\": \"Spotify: {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-    "on-click-middle": "playerctl previous",
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
-    "tooltip": true,
-    "tooltip-format": "Now Playing: {}"
-  },
-
   "custom/playerinfo": {
     "format": "&lt; {} &gt;",
     "exec": "~/.scripts/playerinfo.sh",
     "escape": true,
+    "tooltip": true,
     "return-type": "json",
     "interval": 1,
-    "tooltip": true,
+    "tooltip-format": "Now Playing: {}",
     "on-click-middle": "playerctl play-pause",
     "on-click-right": "playerctl next",
     "on-click-left": "playerctl previous",
@@ -310,7 +306,6 @@
     "on-click-right": "playerctl next",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
-    "tooltip-format": "Now Playing: {}"
   },
 
   // Bottom Bar - modules-right
@@ -321,21 +316,27 @@
 
   "cpu": {
     "format": "󰘚 {usage}󱉸",
-    "on-click": "alacritty -e 'htop'"
+    "tooltip": true,
+    "tooltip-format": "CPU Usage: {usage}%\nCPU Frequency: {frequency} MHz\nCPU Temperature: {temperature}°C",
+    "on-click": "alacritty -e htop"
   },
 
   "memory": {
     "format": " {:2}󱉸",
-    "on-click": "alacritty -e 'htop'"
+    "tooltip": true,
+    "tooltip-format": "Memory Usage: {used} / {total} ({percentage_used}%)",
+    "on-click": "alacritty -e btop"
   },
 
   "disk": {
     "interval": 600,
     "format": "󰆼 {percentage_used}󱉸",
+    "tooltip": true,
+    "tooltip-format": "Disk Usage: {used} / {total} ({percentage_used}%)",
     "path": "/",
-    "on-click": "alacritty -e 'htop'"
+    "on-click": "gnome-disks"
   },
-  
+
   "custom/weather": {
     "format": "{}",
     "tooltip": true,
@@ -360,7 +361,6 @@
     "return-type": "json",
     "interval": 3,
     "format": "{text}",
-    "tooltip": true,
     "escape": false,
     "markup": "pango"
   },
