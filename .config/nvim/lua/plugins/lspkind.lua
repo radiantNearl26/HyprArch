@@ -1,4 +1,4 @@
 return {
-    "hrsh7th/lspkind-nvim",
+    "onsails/lspkind-nvim",
     lazy = "false",
 }

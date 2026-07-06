@@ -1,10 +1,18 @@
 return {
-    "github/copilot.vim",
-    -- disable copilot by default
-    lazy = false,
-    keys = { "<leader>ce" },
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    event = "InsertEnter",
+    requires = {
+        "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    },
+    opts = {
+        suggestion = { enabled = true },
+        panel = { enabled = true },
+        filetypes = {
+        },
+    },
     config = function()
-        vim.keymap.set("n", "<leader>cd", ":Copilot disable <CR>", {})
-        vim.keymap.set("n", "<leader>ce", ":Copilot enable <CR>", {})
+        require("copilot").setup({})
     end,
 }

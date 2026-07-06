@@ -22,4 +22,5 @@ require('config.dev-icons')
 -- Plugin single-line config (didnt created config file for a single-line)
 require("toggleterm").setup{}
 require("bufferline").setup{}
-require("pywal16").setup{}
+require("pywal16").setup()
+require('Comment').setup()

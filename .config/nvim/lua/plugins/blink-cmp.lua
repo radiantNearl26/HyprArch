@@ -1,8 +1,10 @@
 return {
   'saghen/blink.cmp',
   dependencies = {
-    'rafamadriz/friendly-snippets',
-    'L3MON4D3/LuaSnip',
+    'rafamadriz/friendly-snippets', --useful snippets
+    'L3MON4D3/LuaSnip', -- snippet engine
+    'zbirenbaum/copilot-cmp', -- for autocompletion
+    'onsails/lspkind.nvim', -- vs-code like pictograms
   },
 
   version = '1.*',
@@ -17,13 +19,25 @@ return {
       nerd_font_variant = 'mono'
     },
 
-    completion = { documentation = { auto_show = false } },
+    completion = {
+        documentation = { auto_show = true },
+        menu = {
+            draw = {
+                components = {
+                    kind_icon = {
+                        text = function(ctx)
+                        return require('lspkind').symbol_map[ctx.kind] or ''
+                        end,
+                    },
+                },
+            },
+        },
+    },
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
 
-    fuzzy = { implementation = "prefer_rust_with_warning" }
-  },
-  opts_extend = { "sources.default" }
+    fuzzy = { implementation = "prefer_rust_with_warning" },
+  }
 }
