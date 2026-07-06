@@ -6,14 +6,7 @@ auto_activate_base: false
 create_default_packages:
   - pip
   - ipython
-  - numpy
-  - pandas
-  - matplotlib
-  - seaborn
-  - scikit-learn
   - jupyter
   - jupyterlab
-  - scipy
   - libgcc-ng
   - mpich
-  - kagglehub
