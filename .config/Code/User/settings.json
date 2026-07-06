@@ -27,8 +27,13 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.lineNumbers": "relative",
   "workbench.list.smoothScrolling": true,
+
+  /* Terminal configuration */
   "terminal.integrated.initialHint": false,
   "terminal.integrated.smoothScrolling": true,
+  "terminal.external.linuxExec": "alacritty",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.sendKeybindingsToShell": true,
 
   /* File Explorer configuration */
   "explorer.confirmDelete": false,
@@ -48,6 +53,7 @@
     "jsonc": true,
     "json": true,
   },
+  "github.copilot.nextEditSuggestions.eagerness": "auto",
   "github.copilot.chat.anthropic.thinking.enabled": true,
   "github.copilot.chat.anthropic.tools.websearch.enabled": true,
   "github.copilot.chat.codesearch.enabled": true,
@@ -85,8 +91,11 @@
   "eslint.format.enable": true,
   "vs-code-prettier-eslint.prettierLast": true,
 
-  /* Add more settings as needed */
+  /* Git configuration */
+  "git.autorefresh": true,
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.openRepositoryInParentFolders": "always",
+
+  /* Add more settings as needed */
 }
