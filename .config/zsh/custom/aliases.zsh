@@ -23,13 +23,17 @@ alias fzf-preview="fzf --preview 'bat --color=always --style=numbers --line-rang
 alias launch="hyprctl dispatch exec"
 alias tt="echo "0" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo"
 
-# Python Virtual Environment Commands (pip & conda)
-alias cpy="venv/bin/python"
-alias apy="source venv/bin/activate"
+# Python Virtual Environment Commands (use conda instead)
+# alias cpy="venv/bin/python"
+# alias apy="source venv/bin/activate"
+alias conda-activate="conda activate ml-default"
+alias conda-deactivate="conda deactivate"
 
 # Manually mount external drives
 alias mount-oth="sudo mkdir /run/media/Asmit/Others && sudo mount /dev/sda1 /run/media/Asmit/Others"
 alias mount-bkp="sudo mkdir /run/media/Asmit/Backup && sudo mount /dev/sda2 /run/media/Asmit/Backup"
+alias mount-files="sudo mkdir /run/media/Asmit/Files && sudo mount /dev/nvme0n1p3 /run/media/Asmit/Files"
+alias mount-os="sudo mkdir /run/media/Asmit/OS && sudo mount /dev/nvme0n1p1 /run/media/Asmit/OS"
 
 # A safer approach to rm (trash-put)
 alias rm="trash-put"
