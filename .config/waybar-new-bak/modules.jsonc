@@ -31,9 +31,8 @@
     },
     "modules": ["custom/arrow-right","tray"]
   },
-
   "tray": {
-    "spacing": 10
+    "spacing": 8
   },
 
 
@@ -84,9 +83,8 @@
     "return-type": "json",
     "exec-if": "which swaync-client",
     "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw", //toggles panel
-    "on-click-right": "swaync-client -d -sw", //toggles DND
-    "on-click-middle": "swaync-client -R -rs -sw; notify-send -i 'cs-notifications' 'Fist my bump' 'Reloaded config for swaync'", // reloads config
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
 
@@ -134,73 +132,6 @@
     "tooltip-format": "Record Section",
     "on-click": "bash ~/.config/hypr/scripts/record.sh section"
   },
-
-  "network": {
-    "format": "{icon} Anonymous",
-    "format-icons": {
-      "wifi": [""],
-      "ethernet": ["󰈁"],
-      "disconnected": [""]
-    },
-    "format-disabled": "󰖪 Disabled",
-    "format-wifi": "󱚻 {bandwidthTotalBytes}",
-    "format-ethernet": "󰈀 {bandwidthTotalBytes}",
-    "format-disconnected": "󰖪 Disconnected",
-    "format-linked": "󰈀 {bandwidthTotalBytes} [⚠]",
-    "interval": 3,
-    "tooltip": true,
-    "tooltip-format": "{ipaddr}",
-	"tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
-    "tooltip-format-ethernet": " {ifname}: {ipaddr} | {frequency} MHz{icon} ",
-    "tooltip-format-disconnected": "⚠ Disconnected.",
-    "on-click": "notify-send -i 'networkmanager' 'Network Manager' 'Searching for networks'; vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/scan-wifi",
-    "on-click-right": "notify-send -i 'networkmanager' 'Network Manager' 'Restarting Wi-Fi'; vicinae vicinae://launch/@dagimg-dot/store.vicinae.wifi-commander/restart-wifi",
-    "on-click-middle": "alacritty -e 'nmtui'"
-  },
-
-  "bluetooth": {
-    "format-on": " Disconnected",
-    "format-off": "󰂲 Disabled",
-    "format-disabled": "󰂲 Disabled",
-    "format-connected": " {device_battery_percentage}%",
-    "interval": 5,
-    "tooltip": true,
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "notify-send -i 'bluetooth' 'Bluetooth Manager' 'Listing paired devices'; vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/devices",
-    "on-click-right": "notify-send -i 'bluetooth' 'Bluetooth Manager' 'Searching for devices'; vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/scan",
-    "on-click-middle": "blueman-manager"
-  },
-
-  "backlight": {
-    "device": "intel_backlight",
-    "format": "{icon} {percent}%",
-    "format-icons": ["󰃟", "󰃠"],
-    "tooltip": true,
-    "tooltip-format": "Intel Backlight: {percent}%",
-    "on-scroll-down": "brightnessctl s +2%",
-    "on-scroll-up": "brightnessctl s -2%",
-    "on-click-middle": "brightnessctl s 50%"
-  },
-
-  "pulseaudio": {
-	"on-click": "pactl set-sink-mute 45 toggle",
-    "tooltip": true,
-    "tooltip-format": "{volume}% {icon} | {desc}",
-	"format": "{icon} {volume}%",
-   	"format-muted": "󰖁 Muted",
-   	"format-icons": {
-      "default": ["", "", ""]
-    },
-    "on-click": "pavucontrol",
-    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "notify-send -i 'mediacontrol' 'Fist my bump!' 'Launching easyeffects in background'; easyeffects --gapplication-service",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
-    "smooth-scrolling-threshold": 1
-  },
   
   "group/power": {
     "orientation": "inherit",
@@ -208,8 +139,30 @@
       "transition-duration": 300,
       "transition-left-to-right": false
     },
-    "modules": ["battery", "power-profiles-daemon"]
+    "modules": ["network", "pulseaudio", "battery", "power-profiles-daemon"]
   },
+
+  "network": {
+        	"format-wifi": "  {essid}",
+        	"format-ethernet": "󰤮 Disconnected",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": "󰤮 Disconnected",
+		"tooltip-format-wifi": "Signal Strenght: {signalStrength}% | Down Speed: {bandwidthDownBits}, Up Speed: {bandwidthUpBits}",
+	},
+
+	"pulseaudio": {
+		"on-click": "pactl set-sink-mute 45 toggle",
+		"format": "{icon}  {volume}%",
+        	"format-muted": "󰖁 Muted",
+        	"format-icons": {
+            	"headphone": "",
+            	"hands-free": "",
+            	"headset": "",
+            	"phone": "",
+            	"portable": "",
+            	"car": "",
+            	"default": ["", "", ""]
+        },
 
   "battery": {
     "states": {
@@ -229,7 +182,6 @@
       "󰂂",
       "󰁹"
     ],
-    "tooltip": true,
     "tooltip-format": "{timeTo} ~ {power:4.2f} Watts"
   },
 
@@ -247,7 +199,6 @@
   "clock": {
     "format": "{:%H:%M}",
     "format-alt": "{:%A, %d.%m.%Y}",
-    "tooltip": true,
     "tooltip-format": "<tt><big>{calendar}</big></tt>",
     "calendar": {
       "mode": "month",
@@ -272,93 +223,73 @@
     "format": "{icon}",
     "icon-size": 20,
     "all-outputs": true,
-    "tooltip": true,
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close",
     "ignore-list": [
         "ulauncher",
-        "hyprlock",
+        "hyprlock"
     ]
-  },
-
-  "custom/cpucat": {
-    "exec":"~/.scripts/catloop.sh",
-    "tooltip": true,
-    "tooltip-format": "Magic ✨",
-    "on-click": "alacritty -e 'nyancat'"
   },
   
   // Bottom Bar - modules-center
-  "custom/playerinfo": {
-    "format": "&lt; {} &gt;",
-    "exec": "~/.scripts/playerinfo.sh",
-    "escape": true,
-    "tooltip": true,
+  "custom/cpucat": {
+    "exec":"~/.scripts/catloop.sh"
+  },
+
+  "custom/playerlabel": {
+    "format": "{}",
     "return-type": "json",
-    "interval": 1,
-    "tooltip-format": "Now Playing: {}",
-    "on-click-middle": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-left": "playerctl previous",
+    "max-length": 40,
+    "exec": "playerctl metadata --format '{\"text\": \"{{artist}}: {{markup_escape(title)}}\", \"tooltip\": \"Spotify: {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click-middle": "playerctl previous",
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    "tooltip": true,
+    "tooltip-format": "Now Playing: {}"
   },
-
+  
+  "custom/privacydots": {
+    "exec": "~/.scripts/privacy-dots.sh",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{text}",
+    "tooltip": true,
+    "escape": false,
+    "markup": "pango"
+  },
+  
   // Bottom Bar - modules-right
   "group/sys": {
     "orientation": "inherit",
-    "modules": ["temperature","cpu","memory","disk"]
-  },
-
-  "temperature": {
-    "thermal-zone": 2,
-    "hwon-path": "/sys/class/thermal/thermal_zone4/temp",
-    "format": "{icon} {temperatureC}°C",
-    "format-icons": {
-        "low": "",
-        "default": "",
-        "critical": ""
-    },
-    "critical-threshold": 85,
-    "interval": 20,
-    "on-click": "alacritty -e top"
+    "modules": ["cpu","memory","disk"]
   },
 
   "cpu": {
     "format": "󰘚 {usage}󱉸",
-    "tooltip": true,
-    "tooltip-format": "CPU Usage: {usage}%\nCPU Frequency: {frequency} MHz\nCPU Temperature: {temperature}°C",
-    "on-click": "alacritty -e htop"
+    "on-click": "alacritty -e 'htop'"
   },
 
   "memory": {
     "format": " {:2}󱉸",
-    "tooltip": true,
-    "tooltip-format": "Memory Usage: {used} / {total} ({percentage_used}%)",
-    "on-click": "alacritty -e btop"
+    "on-click": "alacritty -e 'htop'"
   },
 
   "disk": {
     "interval": 600,
     "format": "󰆼 {percentage_used}󱉸",
-    "tooltip": true,
-    "tooltip-format": "Disk Usage: {used} / {total} ({percentage_used}%)",
     "path": "/",
-    "on-click": "gnome-disks"
+    "on-click": "alacritty -e 'htop'"
   },
   
   "custom/weather": {
     "format": "{}",
     "tooltip": true,
-    "exec": "wttrbar --nerd --hide-conditions --location 'Kolkata' --custom-indicator '{ICON} {temp_C}°C'",
     "interval": 3600,
-    "return-type": "json",
-    "on-click": "gnome-weather",
-    "on-click-right": "solanum"
+    "exec": "wttrbar --nerd --hide-conditions --location 'West Bengal' --custom-indicator '{ICON} {temp_C}°C'",
+    "return-type": "json"
   },
   
   "group/control-center": {
@@ -367,15 +298,51 @@
       "transition-duration": 300,
       "transition-left-to-right": false
     },
-    "modules": ["custom/arrow-left", "custom/privacydots"]
+    "modules": ["custom/arrow-left","network","bluetooth","backlight","pulseaudio"]
   },
 
-  "custom/privacydots": {
-    "exec": "~/.scripts/privacy-dots.sh",
-    "return-type": "json",
-    "interval": 3,
-    "format": "{text}",
-    "escape": false,
-    "markup": "pango"
-  }
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["󰃟", "󰃠"],
+    "on-scroll-down": "brightnessctl s +2%",
+    "on-scroll-up": "brightnessctl s -2%"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
+    "tooltip-format": "{volume}% {icon} | {desc}",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "󰋍",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": " ",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click-middle": "changevolume mute",
+    "on-click": "pavucontrol",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "on-click-right": "notify-send -i 'mediacontrol' 'Fist my bump!' 'Launching easyeffects in background'; easyeffects --gapplication-service",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "bluetooth": {
+    "format-on": "",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "",
+    "tooltip": true,
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/devices",
+    "on-click-right": "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/scan"
+  },
+
 }

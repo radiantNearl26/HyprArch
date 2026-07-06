@@ -16,15 +16,6 @@ window#waybar {
     border-bottom: 0px solid alpha(@background, 0.85);
 }
 
-window#waybar.overlay {
-    background: alpha(@background, 0);
-    color: alpha(@main-color, 0.5);
-}
-
-#custom-playerinfo {
-    color: @text-color;
-}
-
 #window {
     padding: 2px 10px;
     margin: 0px 0px 0px 0px;
@@ -53,7 +44,6 @@ tooltip label {
 #cpu,
 #memory,
 #disk,
-#temperature,
 #custom-weather {
     padding: 3px 10px;
     margin: 7px 4px;
@@ -78,7 +68,7 @@ tooltip label {
 #network,
 #bluetooth,
 #backlight {
-    padding: 0px 9px;
+    padding: 0px 5px 0px 5px;
     color: lighter(@main-color);
 }
 
@@ -113,18 +103,8 @@ tooltip label {
 }
 
 #tray {
-    margin-left: 4px;
     padding: 0px 2px 0px 2px;
     color: lighter(@main-color);
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
 }
 
 #custom-notifications,
@@ -140,11 +120,11 @@ tooltip label {
 
 #custom-cpucat {
   font-family: "Waycat", monospace;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
   color: @main-color;
-  padding-left: 4px;
-  margin-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 #custom-cpucat:hover {
@@ -165,9 +145,11 @@ tooltip label {
 }
 
 #power {
+    background: alpha(@main-color, 0);
     color: @main-color;
     border-radius: 10px;
     margin: 4px 0px 0px 0px;
+
 }
 
 #power-profiles-daemon {
@@ -184,6 +166,16 @@ tooltip label {
     color: lighter(@main-color);
     background: alpha(@main-color, 0);
 }
+
+
+#custom-playerlabel {
+    padding: 0px 8px;
+    margin: 8px 4px;
+    color: @background;
+    background: alpha(lighter(@main-color), 0.7);
+    border-radius: 10px;
+}
+
 
 #taskbar {
     padding: 0px 4px;
@@ -204,3 +196,19 @@ tooltip label {
     background: alpha(darker(@main-color), 0.3);
     border-radius: 10px;
 }
+
+/*
+.modules-left {
+  background: alpha(@background, 1);
+  padding: 0px 8px 0px 0px;
+  border-radius: 0px;
+  border: 2px solid alpha(@main-color, 0.5);
+}
+
+.modules-right {
+  background: alpha(@background, 1);
+  border: 2px solid alpha(@main-color, 0.5);
+  border-radius: 0px;
+
+}
+  */

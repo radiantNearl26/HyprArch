@@ -9,36 +9,19 @@
       "hyprland/window",
       "group/utils"
     ],
+    
     "modules-center": [
       "custom/updates",
       "hyprland/workspaces",
       "custom/notifications"
       
     ],
+  
     "modules-right": [
       "group/tools",
-      "network",
-      "bluetooth",
-      "backlight",
-      "pulseaudio",
       "group/power",
       "clock"
     ]
-},
-{
-    "name": "overlay",
-    "height": 45,
-    "width": 300,
-    "layer": "bottom",
-    "position": "bottom", 
-    "margin-bottom": -51,
-    "mode": "overlay",
-
-    "modules-center": ["custom/cava"],
-    "custom/cava": {
-        "format": "{}",
-        "exec": "~/.scripts/cava.sh"
-    }
 },
 {
     "output":["eDP-1","HDMI-A-1"],
@@ -53,7 +36,7 @@
     ],
 
     "modules-center": [
-      "custom/playerinfo"
+      "custom/playerlabel",
     ],
 
     "modules-right": [

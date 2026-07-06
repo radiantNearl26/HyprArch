@@ -1,7 +1,7 @@
 @import "/home/Asmit/.cache/wal/colors-waybar.css";
 
-@define-color main-color lighter(@color9);
-@define-color text-color lighter(@main-color);
+@define-color main-color darker(darker(@color9));
+@define-color main-bg-color darker(@color9);
 
 * {
     font: bold 13px "JetBrainsMono Nerd Font Propo";
@@ -16,21 +16,12 @@ window#waybar {
     border-bottom: 0px solid alpha(@background, 0.85);
 }
 
-window#waybar.overlay {
-    background: alpha(@background, 0);
-    color: alpha(@main-color, 0.5);
-}
-
-#custom-playerinfo {
-    color: @text-color;
-}
-
 #window {
     padding: 2px 10px;
     margin: 0px 0px 0px 0px;
     background-color: transparent;
     border-radius: 10px;
-    color: lighter(@main-color);
+    color: @main-color;
 }
 
 tooltip {
@@ -53,12 +44,11 @@ tooltip label {
 #cpu,
 #memory,
 #disk,
-#temperature,
 #custom-weather {
     padding: 3px 10px;
     margin: 7px 4px;
-    background: alpha(darker(@main-color), 0.3);
-    color: @text-color;
+    background: alpha(@main-bg-color, 0.2);
+    color: @main-color;
     border-radius: 12px;
 }
 
@@ -69,8 +59,8 @@ tooltip label {
 #custom-theme-dark {
     padding: 1px 10px;
     margin: 8px 4px;
-    background: alpha(darker(@main-color), 0.3);
-    color: @text-color;
+    background: alpha(@main-bg-color, 0.2);
+    color: @main-color;
     border-radius: 12px;
 }
 
@@ -78,14 +68,15 @@ tooltip label {
 #network,
 #bluetooth,
 #backlight {
-    padding: 0px 9px;
+    padding: 0px 5px 0px 5px;
     color: lighter(@main-color);
+    background: alpha(@main-color, 0);
 }
 
 #workspaces {
     margin: 5px 2px;
     padding: 0px 0px;
-    background: alpha(darker(@foreground), 0.1);
+    background: alpha(@main-bg-color, 0.2);
     border-radius: 12px;
 }
 
@@ -100,31 +91,22 @@ tooltip label {
 #workspaces button.active {
     transition: color 0.5s;
     color: @main-color;
-    background: alpha(darker(@main-color), 0.2);
+    background: alpha(@main-bg-color, 0.2);
     border-radius: 12px;
     margin: 0px 0px;
 }
 
 #workspaces button.urgent,
 #workspaces button:hover {
-    color: @color5;
-    background: alpha(darker(@main-color), 0.3);
+    color: @color7;
+    background: alpha(@main-color, 0.1);
     border-radius: 12px;
 }
 
 #tray {
-    margin-left: 4px;
     padding: 0px 2px 0px 2px;
     color: lighter(@main-color);
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background: alpha(@main-color, 0);
 }
 
 #custom-notifications,
@@ -133,18 +115,18 @@ tooltip label {
     padding: 0px 10px;
     margin: 6px 8px;
     color: @main-color;
-    background: alpha(darker(@main-color), 0.3);
-    color: @text-color;
+    background: alpha(@main-bg-color, 0.2);
+    color: @main-color;
     border-radius: 12px;
 }
 
 #custom-cpucat {
   font-family: "Waycat", monospace;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
   color: @main-color;
-  padding-left: 4px;
-  margin-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 #custom-cpucat:hover {
@@ -160,12 +142,14 @@ tooltip label {
     padding: 4px 6px 0px 0px;
     margin: 0px 2px 4px 4px;
     border-radius: 10px;
+    background: alpha(@main-color, 0);
     color: lighter(@main-color);
     font: bold 14px "JetBrainsMono Nerd Font Propo";
 }
 
 #power {
     color: @main-color;
+    background: alpha(@main-color, 0);
     border-radius: 10px;
     margin: 4px 0px 0px 0px;
 }
@@ -174,7 +158,7 @@ tooltip label {
     padding: 0px 8px;
     margin: 4px 0px 8px 4px;
     color: @main-color;
-    background: alpha(darker(@main-color), 0.3);
+    background: alpha(@main-bg-color, 0.1);
     border-radius: 10px;
 }
 
@@ -184,6 +168,16 @@ tooltip label {
     color: lighter(@main-color);
     background: alpha(@main-color, 0);
 }
+
+
+#custom-playerlabel {
+    padding: 0px 12px;
+    margin: 6px 4px;
+    color: @main-color;
+    background: alpha(@main-bg-color, 0.2);
+    border-radius: 15px;
+}
+
 
 #taskbar {
     padding: 0px 4px;
@@ -204,3 +198,19 @@ tooltip label {
     background: alpha(darker(@main-color), 0.3);
     border-radius: 10px;
 }
+
+/*
+.modules-left {
+  background: alpha(@background, 1);
+  padding: 0px 8px 0px 0px;
+  border-radius: 0px;
+  border: 2px solid alpha(@main-color, 0.5);
+}
+
+.modules-right {
+  background: alpha(@background, 1);
+  border: 2px solid alpha(@main-color, 0.5);
+  border-radius: 0px;
+
+}
+  */
