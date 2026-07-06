@@ -1,0 +1,6 @@
+[soe][Crusher#0]
+bitReduction=16
+lfoActive=true
+lfoRange=24
+mode=1
+sampleReduction=40

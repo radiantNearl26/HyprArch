@@ -1,0 +1,13 @@
+[soe][Crystalizer#0]
+adaptiveIntensity=false
+bypass=true
+intensityBand0=-9
+intensityBand1=-6
+intensityBand10=-3
+intensityBand11=1
+intensityBand5=-1
+intensityBand6=-1
+intensityBand7=-5
+intensityBand8=-6
+intensityBand9=-6
+oversamplingQuality=4

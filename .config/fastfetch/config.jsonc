@@ -8,11 +8,11 @@
         "type": "file",
         "source": "~/.config/fastfetch/logos/frieren.txt",
         // "width": 37,
-        "height": 12,
+        "height": 10,
         "padding": {
-            "top": 2,
-            "right": 5,
-            "left": 3
+            "top": 1,
+            "left": 2,
+            "right": 5
         }
     },
 	"display": {
@@ -20,9 +20,6 @@
 		"separator": "  "
 	},
 	"modules": [
-        "break",
-        "break",
-        "break",
         "break",
         "break",
         { "type": "title", "key": "" },

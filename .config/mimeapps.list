@@ -170,6 +170,8 @@ application/vnd.kde.kxmlguirc=org.gnome.TextEditor.desktop
 x-scheme-handler/discord-1216669957799018608=discord-1216669957799018608.desktop
 x-scheme-handler/mailto=chromium.desktop
 audio/x-opus+ogg=io.github.celluloid_player.Celluloid.desktop
+x-scheme-handler/notion=notion.desktop
+application/x-ipynb+json=code.desktop
 
 [Added Associations]
 audio/ogg=io.github.celluloid_player.Celluloid.desktop;
@@ -342,3 +344,4 @@ application/x-extension-xhtml=librewolf.desktop;
 application/x-extension-xht=librewolf.desktop;
 application/x-partial-download=io.github.celluloid_player.Celluloid.desktop;
 audio/x-opus+ogg=io.github.celluloid_player.Celluloid.desktop;
+application/x-ipynb+json=code.desktop;
