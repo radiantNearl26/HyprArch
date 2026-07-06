@@ -138,6 +138,15 @@
             "AppFlowy": {
                "alias": "notes"
             },
+            "SystemSettings": {
+               "alias": "windows"
+            },
+            "WORDPAD": {
+               "alias": "windows"
+            },
+            "Waydroid": {
+               "alias": "android"
+            },
             "antigravity": {
                "enabled": true
             },
@@ -152,6 +161,9 @@
             },
             "code": {
                "alias": "code"
+            },
+            "glcnd": {
+               "alias": "windows"
             },
             "io.github.alainm23.planify": {
                "alias": "notes"
@@ -183,8 +195,44 @@
             "scrcpy-console": {
                "alias": "usb"
             },
+            "waydroid.com.aurora.adroid": {
+               "alias": "android"
+            },
+            "waydroid.com.aurora.services": {
+               "alias": "android"
+            },
+            "waydroid.com.aurora.store": {
+               "alias": "android"
+            },
+            "waydroid.com.brave.browser": {
+               "alias": "android"
+            },
+            "waydroid.com.vivi.vivimusic": {
+               "alias": "android"
+            },
+            "waydroid.dev.lbeernaert.youhavemail": {
+               "alias": "android"
+            },
+            "waydroid.io.github.huskydg.magisk": {
+               "alias": "android"
+            },
+            "waydroid.me.zhanghai.android.files": {
+               "alias": "android"
+            },
+            "waydroid.net.thunderbird.android": {
+               "alias": "android"
+            },
+            "waydroid.org.fdroid.fdroid": {
+               "alias": "android"
+            },
+            "windows": {
+               "alias": "windows"
+            },
             "windscribe": {
                "alias": "vpn"
+            },
+            "wmplayer": {
+               "alias": "windows"
             }
          }
       },
