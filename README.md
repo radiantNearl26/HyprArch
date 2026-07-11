@@ -5,32 +5,34 @@
 <h1 align="center">Hypr-Arch</h1>
 
 > [!CAUTION]
-> My dotfiles won't probably work out of the box since the configuration files in this repository are tailored to my current setup. If you're using these configurations and make changes to get them working for you, please consider contributing those changes back to the repository. You can refer to the [`CONTRIBUTING`](./CONTRIBUTING) file anytime or reach out to me via DMs or through e-mails.
+>
+> Check the NOTES.md after reinstallation or if something doesn't works. Also, if you're using these configurations and make changes to fix some issues or get the dotfiles working for your setup (since it might not work as intended on different systems), please consider contributing those changes back to the repository. You can refer to the [`CONTRIBUTING`](./CONTRIBUTING) file anytime or create a pull-request or issue to let me know.
 
 A super-charged Arch-Hyprland Setup, created and maintained by Asmit Das Choudhury (@radiantNearl26). This repository contains my personal dotfiles, which are configuration files for various tools and applications on my system. These files are used to customize my workflow, shell, and other aspects of my computing environment.
 
-## Requirements
+## Overview
 > [!NOTE]
-> Currenly working on a script to automate the process of installing the below mentioned softwares from the official pacman repositories or the community AUR repository (yay) or the official flathub repository. Consider contributing if you want to add support for other package managers from other popular distributions to make their task much easier.
+>
+> Currenly working on a script to automate the process of installing the below mentioned softwares (plus the ones in 'Applications' section) from the official pacman repositories or the community AUR repository (yay) or the official flathub repository. Consider contributing if you want to add support for other package managers from other popular distributions to make their task much easier.
 
 Here's some details about the dotfiles:
 + **OS**: [Arch Linux](https://archlinux.org/)
-+ **Window Compositor**: [Hyprland](https://hyprland.org)
-+ **Bar / Panels**: [Waybar](https://github.com/Alexays/Waybar), [HyprPanel](https://github.com/Jas-SinghFSU/HyprPanel)
++ **Window Compositor**: [Hyprland](https://hyprland.org) & [KDE](https://kde.org/)
++ **Bar / Panels**: [Waybar](https://github.com/Alexays/Waybar)
 + **Notifications**: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
-+ **Shell**: [zsh](https://www.zsh.org/), [fish](https://fishshell.com/)
-+ **Terminal**: [kitty](https://sw.kovidgoyal.net/kitty/), [Alacritty](https://github.com/alacritty/alacritty)
++ **Shell**: [zsh](https://www.zsh.org/)
++ **Terminal**: [kitty](https://sw.kovidgoyal.net/kitty/) & [Alacritty](https://github.com/alacritty/alacritty)
 + **Editor**: [Neovim](https://neovim.io/) & [VS Code](https://code.visualstudio.com/)
 + **File Manager**: [Ranger](https://github.com/ranger/ranger) & [Nautilus](https://apps.gnome.org/Nautilus/)
-+ **Launcher**: [rofi](https://github.com/davatorium/rofi) & [tofi](https://github.com/philj500/tofi) & [Ulauncher](https://ulauncher.io/)
-+ **Browser**: [Chromium](https://www.chromium.org/Home) & [LibreWolf](https://www.librewolf.net)
++ **Launcher**: [Vicinae](https://github.com/vicinaehq/vicinae) & [tofi](https://github.com/philj500/tofi) & [Ulauncher](https://ulauncher.io/)
++ **Browser**: [Brave](https://brave.com/) & [LibreWolf](https://www.librewolf.net)
 + **System Monitor**: [btop](https://github.com/aristocratos/btop) & [htop](https://htop.dev/) & [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 + **Audio / Visualizer**: [EasyEffects](https://github.com/wwmm/easyeffects) & [Cava](https://github.com/karlstav/cava)
 + **Music**: [Spotify](https://www.spotify.com/) & [YT-Music](https:music.youtube.com)
 + **Gaming / Overlay**: [Steam](https://store.steampowered.com) & [Heroic Games Launcher](https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher)
 
 ## Screenshots
-> content coming up soon.. stay tuned!
+<!-- ![temp](.assets/shots/img.png) -->
 
 ## File Structure
 > content coming up soon.. stay tuned! (self note: take inspiration from maxixs/perplexity)
