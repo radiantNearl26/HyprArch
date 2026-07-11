@@ -10,11 +10,11 @@ inputDevice=alsa_input.pci-0000_00_1f.3.analog-stereo
 visiblePage=pluginsPage
 
 [StreamOutputs]
-mostUsedPresets=custom-lappy
+mostUsedPresets=custom-lappy,custom-m61
 outputDevice=bluez_output.98_47_44_4F_B1_7C.1
 plugins=equalizer#0,reverb#0,crystalizer#0,convolver#0,limiter#0
 pluginsListWidth=288
-usedPresets=custom-lappy:16
+usedPresets=custom-lappy:19,custom-m61:4
 visiblePage=pluginsPage
 visiblePlugin=equalizer#0
 
@@ -26,4 +26,5 @@ signalType=pinkNoise
 
 [Window]
 height=817
+visiblePresetSheetPage=communityPage
 width=1076
