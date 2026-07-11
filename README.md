@@ -6,7 +6,7 @@
 
 > [!CAUTION]
 >
-> Check the NOTES.md after reinstallation or if something doesn't works. Also, if you're using these configurations and make changes to fix some issues or get the dotfiles working for your setup (since it might not work as intended on different systems), please consider contributing those changes back to the repository. You can refer to the [`CONTRIBUTING`](./CONTRIBUTING) file anytime or create a pull-request or issue to let me know.
+> Check the [`NOTES`](./NOTES.md) file after reinstallation or if something doesn't works. Also, if you're using these configurations and make changes to fix some issues or get the dotfiles working for your setup (since it might not work as intended on different systems), please consider contributing those changes back to the repository. You can refer to the [`CONTRIBUTING`](./CONTRIBUTING) file anytime or create a pull-request or issue to let me know.
 
 A super-charged Arch-Hyprland Setup, created and maintained by Asmit Das Choudhury (@radiantNearl26). This repository contains my personal dotfiles, which are configuration files for various tools and applications on my system. These files are used to customize my workflow, shell, and other aspects of my computing environment.
 
@@ -28,10 +28,11 @@ Here's some details about the dotfiles:
 + **Browser**: [Brave](https://brave.com/) & [LibreWolf](https://www.librewolf.net)
 + **System Monitor**: [btop](https://github.com/aristocratos/btop) & [htop](https://htop.dev/) & [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 + **Audio / Visualizer**: [EasyEffects](https://github.com/wwmm/easyeffects) & [Cava](https://github.com/karlstav/cava)
-+ **Music**: [Spotify](https://www.spotify.com/) & [YT-Music](https:music.youtube.com)
++ **Music**: [Spotify](https://www.spotify.com/) & [YT-Music](https://music.youtube.com)
 + **Gaming / Overlay**: [Steam](https://store.steampowered.com) & [Heroic Games Launcher](https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher)
 
 ## Screenshots
+> content coming up soon.. stay tuned!
 <!-- ![temp](.assets/shots/img.png) -->
 
 ## File Structure
