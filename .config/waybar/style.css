@@ -112,9 +112,21 @@ tooltip label {
     border-radius: 12px;
 }
 
+#custom-start {
+  font-family: monospace;
+  font-size: 24px;
+  color: @main-color;
+  background-color: alpha(darker(@main-color), 0.1);
+  padding-left: 14px;
+  padding-right: 18px;
+}
+
+#custom-start:hover {
+  color: lighter(@text-color);
+  background-color: alpha(darker(@main-color), 0.3);
+}
+
 #tray {
-    margin-left: 4px;
-    padding: 0px 2px 0px 2px;
     color: lighter(@main-color);
 }
 

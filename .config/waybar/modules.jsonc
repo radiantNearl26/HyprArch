@@ -195,7 +195,7 @@
       "default": ["", "", ""]
     },
     "on-click": "pavucontrol",
-    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle": "playerctl play-pause",
     "on-click-right": "notify-send -i 'mediacontrol' 'Fist my bump!' 'Launching easyeffects in background'; easyeffects --gapplication-service",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
@@ -268,6 +268,14 @@
   },
   
   //Bottom Bar - modules-left
+  "custom/start": {
+    "format": "󰣇",
+    "tooltip-format": "Start Menu",
+    "on-click": "vicinae toggle",
+    "on-click-right": "vicinae vicinae://launch/system/browse-apps",
+    "on-click-middle": "ulauncher-toggle"
+  },
+
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 20,
@@ -298,12 +306,9 @@
     "return-type": "json",
     "interval": 1,
     "tooltip-format": "Now Playing: {}",
-    "on-click-middle": "playerctl play-pause",
-    "on-click-right": "playerctl next",
-    "on-click-left": "playerctl previous",
-    "on-click-middle": "playerctl previous",
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
   },

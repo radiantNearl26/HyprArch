@@ -31,7 +31,7 @@
     "width": 300,
     "layer": "bottom",
     "position": "bottom", 
-    "margin-bottom": -51,
+    "margin-bottom": -52,
     "mode": "overlay",
 
     "modules-center": ["custom/cava"],
@@ -48,6 +48,7 @@
     "reload_style_on_change": true,
     "include": ["~/.config/waybar/modules.jsonc"],
     "modules-left": [
+      "custom/start",
       "wlr/taskbar",
       "custom/cpucat"
     ],
