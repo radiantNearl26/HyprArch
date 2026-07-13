@@ -35,6 +35,11 @@
       }
    },
    "favorites": [
+      "@rithvikvibhu/store.vicinae.arch-packages:search-arch-packages",
+      "@fbosch/store.vicinae.flathub-search:flathub-search",
+      "clipboard:history",
+      "files:search",
+      "system:browse-apps",
       "applications:brave-browser",
       "applications:brave-hnpfjngllnobngcgfapefoaidbinmjnm-Default",
       "applications:org.gnome.Nautilus",
