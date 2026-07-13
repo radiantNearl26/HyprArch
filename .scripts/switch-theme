@@ -1,9 +1,31 @@
 #!/bin/bash
 
 MODE=$1
-# Incorrect input - Show help information
+COLOR=$3
+
+# Show help information
+if [[ "$MODE" == "--help" || "$MODE" == "-h" ]]; then
+    echo "This is a simple helper tool to switch themes globally (for multiple apps) from the terminal."
+    echo ""
+    echo "Apps applicable:
+    - GTK Apps
+    - QT Apps (via Kvantum)
+    - Waybar
+    - Ulauncher
+    - Snappy Switcher
+    - Swaync
+    - Vicinae
+    - folder themes (WIP)"
+    echo "Usage: switch-theme [light|dark] [--color <color>]"
+    echo ""
+    echo "Available colorschemes: blue, red, green, orange, purple, yellow, grey"
+    echo "INFO: Accent color will be extracted from pywal if no color is specified."
+    exit 0
+fi
+
+# Show incorrect input
 if [[ "$MODE" != "light" && "$MODE" != "dark" ]]; then
-    echo "Usage: $0 [light|dark] [--color <color>]"
+    echo "ERROR: No mode (light/dark) specified!"
     exit 1
 fi
 
@@ -14,6 +36,7 @@ WALLPAPER="${WALLPAPER/#\~/$HOME}"
 ENV_DIR="$HOME/.config/hypr/hyprsource/env_vars.conf"
 CONFIG_ULAUNCHER="$HOME/.config/ulauncher/settings.json"
 CONFIG_SNAPPY="$HOME/.config/snappy-switcher/config.ini"
+CONFIG_KVANTUM="$HOME/.config/Kvantum/kvantum.kvconfig"
 
 echo "Switching to $MODE mode..."
 
@@ -23,6 +46,7 @@ if [[ "$MODE" == "light" ]]; then
 elif [[ "$MODE" == "dark" ]]; then
     wal -ni "$WALLPAPER"
 fi
+echo "Updated pywal colorscheme to $MODE mode."
 
 # Waybar stylesheet declaration
 if [[ "$MODE" == "dark" ]]; then
@@ -36,34 +60,42 @@ if [[ ! -f "$WAYBAR_STYLE" ]]; then
     echo "Waybar stylesheet not found at the config directory. Skipping waybar stylesheet update."
 else
     cp "$WAYBAR_STYLE" "$HOME/.config/waybar/style.css"
-    echo "Swapped waybar stylesheet for $MODE mode."
+    echo "Updated waybar stylesheet for $MODE mode."
 fi
+echo ""
 
 # Determine accent color
-if [[ "$2" == "--color" && -n "$3" ]]; then
-    if [[ "$3" =~ ^(red|green|orange|purple|yellow|grey)$ ]]; then
-        accent="-$3"
-        echo "Manual accent color specified: $accent"
-    elif [[ "$3" == "blue" ]]; then
+if [[ "$2" == "--color" && -n "$COLOR" ]]; then
+    echo "MANUAL: Accent color specified."
+    if [[ "$COLOR" =~ ^(red|green|orange|purple|yellow|grey)$ ]]; then
+        accent="-$COLOR"
+        echo "Accent color: $COLOR" # using the color var here since there's no - before it
+    elif [[ "$COLOR" == "blue" ]]; then
         accent=""
-        echo "Manual accent color specified: -blue (default)"
+        echo "Accent color: $COLOR"
     else
         echo "Invalid color specified. Valid options are: blue, red, green, orange, purple, yellow, grey."
         exit 1
     fi
 else
-    echo "No manual accent color specified. Extracting accent color from pywal."
+    echo "AUTO: Extracting accent color from pywal."
     COLOR="$(grep "color9" ~/.cache/wal/colors.css | cut -d '#' -f2)"
     COLOR="${COLOR%;}" # HEX Code of the color
     accent=$(python $HOME/.scripts/color-extract.py $COLOR)
-    echo "Accent color: $accent"
+    if [[ "$accent" == "" ]]; then
+        echo "Accent color: blue"
+    else
+        echo "Accent color: ${accent#-}"
+    fi
 fi
+echo ""
 
 if [[ "$MODE" == "dark" ]]; then
     GTK_THEME="WhiteSur-Dark$accent:dark"
     COLOR_SCHEME="prefer-dark"
     ULAUNCHER_THEME="darkblue-ice"
     SNAPPY_THEME="cyberpunk.ini"
+    KVANTUM_THEME="WhiteSurDark"
     FOLDER_THEME="mocha"
     VICINAE_THEME="pywal"
 else
@@ -71,6 +103,7 @@ else
     COLOR_SCHEME="prefer-light"
     ULAUNCHER_THEME="lightblue-ice"
     SNAPPY_THEME="catppuccin-latte.ini"
+    KVANTUM_THEME="WhiteSur"
     FOLDER_THEME="latte"
     VICINAE_THEME="pywal"
 fi
@@ -94,6 +127,7 @@ else
     FOLDER_COLOR="lavender"
 fi
 
+echo "Updating colorchemes for configured apps..."
 # Apply GSettings (for running GTK apps)
 if [[ ! -f "$ENV_DIR" ]]; then
     echo "gsettings command or the hyprland env-var config not found. Skipping GTK theme and color scheme update."
@@ -102,7 +136,7 @@ else
     gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME" 2>/dev/null
     sed -i "s/\(env = GTK_THEME,\).*/\1$GTK_THEME/" "$ENV_DIR"
     export GTK_THEME="$GTK_THEME"
-    echo "GTK Theme switched to $GTK_THEME. Restart for changes!"
+    echo "GTK Theme switched to $GTK_THEME ($COLOR_SCHEME)"
 fi
 
 # Update Ulauncher theme
@@ -111,7 +145,7 @@ if [[ ! -f "$CONFIG_ULAUNCHER" ]]; then
 else
     sed -i "s/\"theme-name\": \".*\"/\"theme-name\": \"$ULAUNCHER_THEME\"/" "$CONFIG_ULAUNCHER"
     pkill ulauncher
-    (ulauncher --no-window-shadow > /dev/null 2>&1 &)
+    (ulauncher --no-window-shadow --hide-window > /dev/null 2>&1 &)
     echo "Ulauncher theme updated to $ULAUNCHER_THEME"
 fi
 
@@ -125,17 +159,17 @@ else
     echo "Snappy-Switcher theme updated to $SNAPPY_THEME"
 fi
 
-# Refresh swaync
-if command -v swaync &> /dev/null; then
-    pkill swaync
-    echo "Swaync refreshed to apply new theme colors."
+# Update Kvantum (QT) theme
+if [[ ! -f "$CONFIG_KVANTUM" ]]; then
+    echo "Kvantum config not found at the config directory. Skipping QT theme update."
 else
-    echo "Swaync is not installed. Skipping swaync theme refresh."
+    sed -i "s/\(theme=\).*/\1$KVANTUM_THEME/" "$CONFIG_KVANTUM"
+    echo "Kvantum (QT) theme updated to $KVANTUM_THEME"
 fi
 
 # Update folder icons
 # TODO: Add code to update folder icons. Do after merging the papirus-folders icons with WhiteSur icons
-echo "Updated folder icons to cat-$FOLDER_THEME-$FOLDER_COLOR"
+# echo "Updated folder icons to cat-$FOLDER_THEME-$FOLDER_COLOR"
 
 # Switch vicinae theme
 if command -v vicinae &> /dev/null; then
@@ -145,5 +179,15 @@ else
     echo "Vicinae is not installed. Skipping vicinae theme switch."
 fi
 
+# Refresh swaync
+if command -v swaync &> /dev/null; then
+    pkill swaync
+    echo "Swaync refreshed to apply new theme colors"
+else
+    echo "Swaync is not installed. Skipping swaync theme refresh."
+fi
+
 # Send notification
+echo ""
+echo "SUCCESS: Switched to $MODE mode."
 notify-send "Theme Switcher" "Successfully switched to $MODE mode." -i "xcolor" 
