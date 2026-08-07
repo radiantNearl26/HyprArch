@@ -53,7 +53,9 @@ alias dot="git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME""
 alias dadd="dot add" # add file contents to the index
 alias dcom="dot commit -m" # save changes to the local repository
 alias damend="dot commit --amend" # undo the last commit and edit the commit message
+
 alias dpush="dot push -u origin main" # push changes to the main branch of the remote repository
+alias dpull="dot pull" # fetch + merge from the remote repo
 
 alias ddiff="dot diff" # show changes between commits & commit and working tree
 alias ddiffs="dot diff --staged" # show changes between staged changes and last commit
@@ -68,3 +70,31 @@ alias dfiles="dot ls-files" # list all files in the index
 alias dmv="dot mv" # move/rename a file, a directory, or a symlink
 alias drm="dot rm" # remove from both index and working tree
 alias drmc="dot rm --cached" # remove from index but keep in working tree
+
+alias drebi="dot rebase -i" # Interactive rebase (specify HEAD~n, where nth commit to rebase)
+alias dreb-continue="dot rebase --continue" # Git Rebase - continue to next commit
+
+# Base Git Commands
+alias gadd="git add" # add file contents to the index
+alias gcom="git commit -m" # save changes to the local repository
+alias gamend="git commit --amend" # undo the last commit and edit the commit message
+
+alias gpush="git push -u origin main" # push changes to the main branch of the remote repository
+alias gpull="git pull" # fetch + merge from the remote repo
+
+alias gdiff="git diff" # show changes between commits & commit and working tree
+alias gdiffs="git diff --staged" # show changes between staged changes and last commit
+alias gr="git restore" # discard changes in working tree
+alias grs="git restore --staged" # unstage but keep in working tree (keep changes)
+
+alias gstat="git status" # show the working tree status
+alias glog='git log --pretty=format:"%h - %an, %ar: %s" --graph HEAD' # show commit logs
+alias gshow="git show" # show info about a commit
+alias gfiles="git ls-files" # list all files in the index
+
+alias gmv="git mv" # move/rename a file, a directory, or a symlink
+alias grm="git rm" # remove from both index and working tree
+alias grmc="git rm --cached" # remove from index but keep in working tree
+
+alias grebi="git rebase -i" # Interactive rebase (specify HEAD~n, where nth commit to rebase)
+alias greb-continue="git rebase --continue" # Git Rebase - continue to next commit
