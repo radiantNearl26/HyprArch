@@ -3,7 +3,7 @@
 1. Create a softlink between the pywal.toml and the cache file. This can be done using the following command in the terminal:
 
     ```bash
-    ln -s ~/.cache/wal/colors.json ~/.config/vicinae/pywal.toml
+    ln -s ~/.cache/wal/colors.json ~/.config/vicinae/themes/pywal.toml
     ```
 
 > [!NOTE]

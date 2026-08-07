@@ -1,4 +1,4 @@
-@import "/home/Asmit/.cache/wal/colors-waybar.css";
+@import "../../.cache/wal/colors-waybar.css";
 
 @define-color main-color darker(darker(@color9));
 @define-color main-bg-color darker(@color9);
