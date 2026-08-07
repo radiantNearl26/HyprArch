@@ -42,10 +42,25 @@ echo "Switching to $MODE mode..."
 
 # Update colorscheme
 if [[ "$MODE" == "light" ]]; then
-    wal -ni "$WALLPAPER" -lt
+    if [[ "$COLOR" == "oled" ]]; then
+        echo "OLED: Activating 'base16-grayscale' pywal theme..."
+        echo ""
+        wal -nf base16-grayscale -lt
+    else
+        echo ""
+        wal -ni "$WALLPAPER" -lt
+    fi
 elif [[ "$MODE" == "dark" ]]; then
-    wal -ni "$WALLPAPER"
+    if [[ "$COLOR" == "oled" ]]; then
+        echo "OLED: Activating 'base16-grayscale' pywal theme..."
+        echo ""
+        wal -nf base16-grayscale
+    else
+        echo ""
+        wal -ni "$WALLPAPER"
+    fi
 fi
+echo ""
 echo "Updated pywal colorscheme to $MODE mode."
 
 # Waybar stylesheet declaration
@@ -69,10 +84,13 @@ if [[ "$2" == "--color" && -n "$COLOR" ]]; then
     echo "MANUAL: Accent color specified."
     if [[ "$COLOR" =~ ^(red|green|orange|purple|yellow|grey)$ ]]; then
         accent="-$COLOR"
-        echo "Accent color: $COLOR" # using the color var here since there's no - before it
+        echo "ACCENT: $COLOR" # using the color var here since there's no - before it
     elif [[ "$COLOR" == "blue" ]]; then
         accent=""
-        echo "Accent color: $COLOR"
+        echo "ACCENT: $COLOR"
+    elif [[ "$COLOR" == "oled" ]]; then
+        accent="-grey"
+        echo "ACCENT: $COLOR (grey)"
     else
         echo "Invalid color specified. Valid options are: blue, red, green, orange, purple, yellow, grey."
         exit 1
@@ -83,9 +101,9 @@ else
     COLOR="${COLOR%;}" # HEX Code of the color
     accent=$(python $HOME/.scripts/color-extract.py $COLOR)
     if [[ "$accent" == "" ]]; then
-        echo "Accent color: blue"
+        echo "ACCENT: blue"
     else
-        echo "Accent color: ${accent#-}"
+        echo "ACCENT: ${accent#-}"
     fi
 fi
 echo ""
@@ -130,41 +148,41 @@ fi
 echo "Updating colorchemes for configured apps..."
 # Apply GSettings (for running GTK apps)
 if [[ ! -f "$ENV_DIR" ]]; then
-    echo "gsettings command or the hyprland env-var config not found. Skipping GTK theme and color scheme update."
+    echo "ERROR: gsettings command or the hyprland env-var config not found. Skipping GTK theme and color scheme update."
 else
     gsettings set org.gnome.desktop.interface gtk-theme "$GTK_THEME" 2>/dev/null
     gsettings set org.gnome.desktop.interface color-scheme "$COLOR_SCHEME" 2>/dev/null
     sed -i "s/\(env = GTK_THEME,\).*/\1$GTK_THEME/" "$ENV_DIR"
     export GTK_THEME="$GTK_THEME"
-    echo "GTK Theme switched to $GTK_THEME ($COLOR_SCHEME)"
+    echo "  GTK Theme switched to $GTK_THEME ($COLOR_SCHEME)"
 fi
 
 # Update Ulauncher theme
 if [[ ! -f "$CONFIG_ULAUNCHER" ]]; then
-    echo "Ulauncher config not found at the config directory. Skipping ulauncher theme update."
+    echo "ERROR: Ulauncher config not found at the config directory. Skipping ulauncher theme update."
 else
     sed -i "s/\"theme-name\": \".*\"/\"theme-name\": \"$ULAUNCHER_THEME\"/" "$CONFIG_ULAUNCHER"
     pkill ulauncher
     (ulauncher --no-window-shadow --hide-window > /dev/null 2>&1 &)
-    echo "Ulauncher theme updated to $ULAUNCHER_THEME"
+    echo "  Ulauncher theme updated to $ULAUNCHER_THEME"
 fi
 
 # Update snappy-switcher theme
 if [[ ! -f "$CONFIG_SNAPPY" ]]; then
-    echo "Snappy-Switcher config not found at the config directory. Skipping snappy-switcher theme update."
+    echo "ERROR: Snappy-Switcher config not found at the config directory. Skipping snappy-switcher theme update."
 else
     sed -i "s/\(name = \).*/\1$SNAPPY_THEME/" "$CONFIG_SNAPPY"
     pkill snappy-switcher
     (snappy-switcher --daemon> /dev/null 2>&1 &)
-    echo "Snappy-Switcher theme updated to $SNAPPY_THEME"
+    echo "  Snappy-Switcher theme updated to $SNAPPY_THEME"
 fi
 
 # Update Kvantum (QT) theme
 if [[ ! -f "$CONFIG_KVANTUM" ]]; then
-    echo "Kvantum config not found at the config directory. Skipping QT theme update."
+    echo "ERROR: Kvantum config not found at the config directory. Skipping QT theme update."
 else
     sed -i "s/\(theme=\).*/\1$KVANTUM_THEME/" "$CONFIG_KVANTUM"
-    echo "Kvantum (QT) theme updated to $KVANTUM_THEME"
+    echo "  Kvantum (QT) theme updated to $KVANTUM_THEME"
 fi
 
 # Update folder icons
@@ -174,17 +192,17 @@ fi
 # Switch vicinae theme
 if command -v vicinae &> /dev/null; then
     vicinae vicinae://theme/set/$VICINAE_THEME
-    echo "Vicinae theme switched to $VICINAE_THEME"
+    echo "  Vicinae theme switched to $VICINAE_THEME"
 else
-    echo "Vicinae is not installed. Skipping vicinae theme switch."
+    echo "ERROR: Vicinae is not installed. Skipping vicinae theme switch."
 fi
 
 # Refresh swaync
 if command -v swaync &> /dev/null; then
     pkill swaync
-    echo "Swaync refreshed to apply new theme colors"
+    echo "  Swaync refreshed to apply new theme colors"
 else
-    echo "Swaync is not installed. Skipping swaync theme refresh."
+    echo "ERROR: Swaync is not installed. Skipping swaync theme refresh."
 fi
 
 # Send notification
