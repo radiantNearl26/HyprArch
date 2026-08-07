@@ -14,7 +14,7 @@ mostUsedPresets=custom-lappy,custom-m61
 outputDevice=bluez_output.98_47_44_4F_B1_7C.1
 plugins=equalizer#0,reverb#0,crystalizer#0,convolver#0,limiter#0
 pluginsListWidth=288
-usedPresets=custom-lappy:19,custom-m61:4
+usedPresets=custom-lappy:74,custom-m61:22
 visiblePage=pluginsPage
 visiblePlugin=equalizer#0
 
@@ -26,5 +26,5 @@ signalType=pinkNoise
 
 [Window]
 height=817
-visiblePresetSheetPage=communityPage
+outputAutoloadingUsesFallback=true
 width=1076

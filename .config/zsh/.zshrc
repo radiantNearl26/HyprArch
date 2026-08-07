@@ -16,7 +16,7 @@ source $ZDOTDIR/custom/keybinds.zsh
 source $ZDOTDIR/custom/theming.zsh
 
 # Plugins
-plugins=(alias-finder aliases archlinux history git npm zsh-autosuggestions zsh-syntax-highlighting sudo systemd)
+plugins=(alias-finder aliases archlinux history npm zsh-autosuggestions zsh-syntax-highlighting sudo systemd)
 zstyle ':omz:plugins:alias-finder' autoload yes
 source $HOME/.config/zsh/ohmyzsh/oh-my-zsh.sh
 

@@ -10,6 +10,7 @@ return {
         suggestion = { enabled = true },
         panel = { enabled = true },
         filetypes = {
+            markdown = true
         },
     },
     config = function()
